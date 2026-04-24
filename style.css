@@ -1925,3 +1925,123 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   background: var(--ink);
   border-top: 1px solid var(--brd);
 }
+
+/* ================================================
+   CTA 強化 — はっきり目立つボタン
+   ================================================ */
+
+/* メインCTAボタン: よりはっきりと */
+.btn-a {
+  padding: 19px 24px !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.08em !important;
+  background: var(--mg) !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 0 0 rgba(227,79,112,0);
+  transition: transform 0.2s var(--ease), box-shadow 0.3s ease, opacity 0.2s !important;
+}
+.btn-a:hover {
+  opacity: 1 !important;
+  box-shadow: 0 0 28px rgba(227,79,112,0.45);
+  transform: translateY(-1px);
+}
+.btn-a:active {
+  transform: scale(0.97) translateY(0) !important;
+  box-shadow: none;
+}
+
+/* ナビのCTAボタン: 枠線を追加してより目立つ */
+.nav-btn {
+  padding: 10px 20px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.12em !important;
+  border-radius: 3px !important;
+  box-shadow: 0 0 16px rgba(227,79,112,0.35);
+  transition: box-shadow 0.3s ease, transform 0.15s !important;
+}
+.nav-btn:hover {
+  box-shadow: 0 0 28px rgba(227,79,112,0.6);
+  transform: translateY(-1px);
+}
+
+/* Hero CTAエリア: 矢印アイコン付きラベル */
+.hero-btns .btn-a::after {
+  content: ' →';
+  font-style: normal;
+  letter-spacing: 0;
+}
+
+/* ヒーローCTAの補足テキスト */
+.hero-cta-note {
+  font-size: 11px;
+  color: var(--sl);
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Final CTA section: よりインパクト強く */
+.fcta {
+  text-align: center;
+}
+.fcta-ttl {
+  font-size: clamp(44px, 6vw, 80px) !important;
+}
+.fcta-btns {
+  align-items: center;
+}
+.fcta-btns .btn-a {
+  max-width: 400px;
+  margin: 0 auto;
+  font-size: 15px !important;
+  padding: 22px 32px !important;
+}
+.fcta-btns .btn-b {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* スケジュールの予約ボタン: もっとはっきり */
+.evt-reserve-btn {
+  background: transparent;
+  border: 1px solid var(--mg) !important;
+  color: var(--mg) !important;
+  font-size: 11px !important;
+  font-weight: 500 !important;
+  padding: 9px 18px !important;
+  letter-spacing: 0.1em !important;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s !important;
+}
+.evt-reserve-btn:hover {
+  background: var(--mg) !important;
+  color: #fff !important;
+  box-shadow: 0 0 16px rgba(227,79,112,0.4);
+}
+
+/* フォームの送信ボタン */
+.gd-submit {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.06em !important;
+  padding: 20px !important;
+  box-shadow: 0 0 20px rgba(227,79,112,0.3);
+  transition: box-shadow 0.3s ease, transform 0.15s !important;
+}
+.gd-submit:hover:not(:disabled) {
+  box-shadow: 0 0 32px rgba(227,79,112,0.5);
+  transform: translateY(-1px);
+}
+
+/* hero-cta-note: ボタン下の補足 */
+.hero-cta-note {
+  font-size: 11px;
+  color: rgba(240,238,233,0.4);
+  letter-spacing: 0.08em;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-family: 'DM Sans', sans-serif;
+}

@@ -2273,3 +2273,89 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
 @media (max-width: 400px) {
   .gd-date-grid { grid-template-columns: 1fr 1fr !important; }
 }
+
+/* ================================================
+   統合予約フォーム — イベント連動UI
+   ================================================ */
+
+/* イベントあり日付のドット */
+.date-event-dot {
+  display: inline-block;
+  width: 5px; height: 5px;
+  background: var(--mg);
+  border-radius: 50%;
+  margin-left: 4px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* イベントセクション見出し */
+.event-label-highlight {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--mist) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.1em;
+}
+.event-label-highlight svg { color: var(--mg); }
+
+/* イベントチェックアイテム */
+.event-check-item .gd-check-label strong {
+  display: block;
+  font-size: 13px;
+  color: var(--mist);
+  margin-bottom: 3px;
+}
+.event-check-title {
+  display: block;
+  font-size: 12.5px;
+  color: var(--off);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  margin-bottom: 3px;
+  font-style: italic;
+}
+.event-check-item small {
+  font-size: 11px;
+  color: var(--sl);
+  display: block;
+}
+
+/* 予約不要イベント情報表示 */
+.event-info-only {
+  padding: 14px 16px;
+  background: rgba(58,167,201,0.06);
+  border: 1px solid rgba(58,167,201,0.2);
+  border-radius: 3px;
+  margin-top: 4px;
+}
+.event-info-title {
+  font-size: 13px;
+  color: var(--mist);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-style: italic;
+  margin-bottom: 4px;
+}
+.event-info-detail {
+  font-size: 11px;
+  color: var(--sl);
+  font-family: 'DM Sans', sans-serif;
+  margin-bottom: 6px;
+}
+.event-info-freenote {
+  font-size: 10px;
+  color: var(--aq);
+  letter-spacing: 0.1em;
+  font-family: 'DM Sans', sans-serif;
+  text-transform: uppercase;
+}
+
+/* res-inner: max-width */
+.res-inner { max-width: 640px; margin: 0 auto; }
+@media (min-width: 768px) { .res-inner { max-width: 680px; } }
+
+/* schedule の evt-reserve-btn — タブ不要になったので動作変更 */
+.evt-reserve-btn[data-tab] {
+  cursor: pointer;
+}

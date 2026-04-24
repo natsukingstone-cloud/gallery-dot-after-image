@@ -464,135 +464,144 @@
 <div class="divider"></div>
 
 <!-- ════════ RESERVATION FORMS（Formrun）════════ -->
-<section class="res-section" id="reservation" style="padding:72px 22px" aria-labelledby="res-h">
-  <div class="s-eyebrow reveal-left">Reservation</div>
-  <h2 class="s-ttl reveal-clip d-01" id="res-h">来場予約 &amp;<br><em>イベント申込</em></h2>
-  <p class="s-body reveal d-02">
-    来場予約・トークイベント・ライブパフォーマンスの申込を1つのフォームで受け付けています。<br>
-    最初に「予約の種類」を選ぶと、必要な項目だけが表示されます。
-  </p>
+<section class="res-section" id="reservation" aria-labelledby="res-h">
 
-  <!-- ══ 予約タブ + HTMLフォーム ══ -->
-  <!-- GAS設定後はこのコメントを参照: reservation.jsのGAS_URLを設定してください -->
-  <div class="res-tabs" role="tablist" aria-label="予約フォームの選択">
-    <button class="res-tab active" role="tab" data-tab="visit">
-      <span class="res-tab-date">— 来場</span>
-      <span class="res-tab-title">来場予約</span>
-    </button>
-    <button class="res-tab" role="tab" data-tab="talk1">
-      <span class="res-tab-date">1/11 日</span>
-      <span class="res-tab-title">AFTER IMAGE と、10年のキュレーション</span>
-    </button>
-    <button class="res-tab" role="tab" data-tab="talk2">
-      <span class="res-tab-date">1/17 土</span>
-      <span class="res-tab-title">記憶・物質・イメージの残り方</span>
-    </button>
-    <button class="res-tab" role="tab" data-tab="live1">
-      <span class="res-tab-date">1/18 日</span>
-      <span class="res-tab-title">AFTER IMAGE / Light Trace</span>
-    </button>
-    <button class="res-tab" role="tab" data-tab="talk3">
-      <span class="res-tab-date">1/24 土</span>
-      <span class="res-tab-title">若手作家が語る "AFTER IMAGE"</span>
-    </button>
-  </div>
+  <div class="res-inner">
+    <div class="s-eyebrow reveal-left">Reservation</div>
+    <h2 class="s-ttl reveal-clip" id="res-h" style="transition-delay:0.1s">来場・イベント<br><em>予約フォーム</em></h2>
+    <p class="s-body reveal" style="transition-delay:0.2s;margin-bottom:36px">
+      来場予約とイベント参加を<strong>1つのフォーム</strong>で受け付けています。<br>
+      来場日を選ぶと、その日にイベントがある場合は参加オプションが自動で表示されます。
+    </p>
 
-  <!-- 来場予約 -->
-  <div class="res-panel active" id="panel-visit" role="tabpanel">
-    <div id="form-visit">
+    <!-- ═══ 統合フォーム ═══ -->
+    <div id="form-unified">
       <form class="gd-form" novalidate>
+
+        <!-- 基本情報 -->
         <div class="gd-form-header">
           <div class="gd-form-event-name">来場予約フォーム</div>
-          <div class="gd-form-event-meta"><span>2026年1月10日〜26日</span><span>12:00–19:00</span><span>火曜休廊</span></div>
+          <div class="gd-form-event-meta">
+            <span>2026年1月10日〜26日</span>
+            <span>12:00–19:00</span>
+            <span>火曜休廊 · 入場無料</span>
+          </div>
         </div>
-        <div class="gd-field"><label class="gd-label" for="v-name">氏名 <span class="gd-required">必須</span></label><input class="gd-input" type="text" id="v-name" name="name" placeholder="例：山田 太郎" autocomplete="name"><span class="gd-error-msg">氏名を入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="v-email">メールアドレス <span class="gd-required">必須</span></label><input class="gd-input" type="email" id="v-email" name="email" placeholder="例：taro@example.com" autocomplete="email"><span class="gd-error-msg">正しいメールアドレスを入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="v-phone">電話番号 <span class="gd-required">必須</span></label><input class="gd-input" type="tel" id="v-phone" name="phone" placeholder="例：090-1234-5678" autocomplete="tel"><span class="gd-error-msg">電話番号を正しく入力してください</span></div>
-        <div class="gd-field"><div class="gd-label">来場日を選択 <span class="gd-required">必須</span></div></div>
-        <div class="gd-date-grid"></div>
-        <div class="gd-field gd-time-slot-wrap" style="display:none"><div class="gd-label">時間帯を選択（30分枠）<span class="gd-required">必須</span></div><div class="gd-time-slots"></div></div>
-        <div class="gd-field"><label class="gd-label">同伴人数 <span class="gd-optional">任意・最大2名</span></label><div class="gd-counter"><button type="button" class="gd-counter-btn" data-action="minus">−</button><div class="gd-counter-val">0</div><button type="button" class="gd-counter-btn" data-action="plus">+</button></div></div>
+
+        <div class="gd-field">
+          <label class="gd-label" for="u-name">氏名 <span class="gd-required">必須</span></label>
+          <input class="gd-input" type="text" id="u-name" name="name" placeholder="例：山田 太郎" autocomplete="name">
+          <span class="gd-error-msg">氏名を入力してください</span>
+        </div>
+
+        <div class="gd-field">
+          <label class="gd-label" for="u-email">メールアドレス <span class="gd-required">必須</span></label>
+          <input class="gd-input" type="email" id="u-email" name="email" placeholder="例：taro@example.com" autocomplete="email">
+          <span class="gd-error-msg">正しいメールアドレスを入力してください</span>
+        </div>
+
+        <div class="gd-field">
+          <label class="gd-label" for="u-phone">電話番号 <span class="gd-required">必須</span></label>
+          <input class="gd-input" type="tel" id="u-phone" name="phone" placeholder="例：090-1234-5678" autocomplete="tel">
+          <span class="gd-error-msg">電話番号を入力してください</span>
+        </div>
+
         <div class="gd-divider"></div>
-        <div class="gd-field"><div class="gd-label">トークイベント参加 <span class="gd-optional">任意・複数可</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="talk" value="talk1"><span class="gd-check-box"></span><span class="gd-check-label">1/11（日）トーク①「AFTER IMAGE と、10年のキュレーション」<small>17:00–18:15 ／ 定員40名</small></span></label><label class="gd-check-item"><input type="checkbox" name="talk" value="talk2"><span class="gd-check-box"></span><span class="gd-check-label">1/17（土）トーク②「記憶・物質・イメージの残り方」<small>18:00–19:00 ／ 定員35名</small></span></label><label class="gd-check-item"><input type="checkbox" name="talk" value="live1"><span class="gd-check-box"></span><span class="gd-check-label">1/18（日）ライブ①「AFTER IMAGE / Light Trace」<small>18:30–19:10 ／ 定員30名</small></span></label><label class="gd-check-item"><input type="checkbox" name="talk" value="talk3"><span class="gd-check-box"></span><span class="gd-check-label">1/24（土）トーク③「若手作家が語る "AFTER IMAGE"」<small>16:00–17:00 ／ 定員50名</small></span></label></div></div>
+
+        <!-- 来場日 -->
+        <div class="gd-field">
+          <div class="gd-label">来場日を選択 <span class="gd-required">必須</span></div>
+        </div>
+        <div class="gd-date-grid" id="u-date-grid"></div>
+
+        <!-- 時間帯（日付選択後に表示） -->
+        <div class="gd-field gd-time-slot-wrap" id="u-time-wrap" style="display:none">
+          <div class="gd-label">時間帯を選択（30分枠）<span class="gd-required">必須</span></div>
+          <div class="gd-time-slots" id="u-time-slots"></div>
+        </div>
+
+        <!-- ★ イベント参加（日付に連動して自動表示） -->
+        <div id="u-event-wrap" style="display:none">
+          <div class="gd-divider"></div>
+          <div class="gd-field">
+            <div class="gd-label event-label-highlight">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              この日はイベントがあります
+              <span class="gd-optional">参加する場合はチェック</span>
+            </div>
+            <div class="gd-check-group" id="u-event-checks"></div>
+          </div>
+          <!-- イベント質問欄（チェック後に表示） -->
+          <div id="u-event-note-wrap" style="display:none">
+            <div class="gd-field">
+              <label class="gd-label" for="u-note">登壇者への事前質問 <span class="gd-optional">任意</span></label>
+              <textarea class="gd-textarea" id="u-note" name="note" placeholder="質問があればご記入ください（当日Q&amp;Aで取り上げる可能性があります）"></textarea>
+            </div>
+          </div>
+        </div>
+
         <div class="gd-divider"></div>
-        <div class="gd-field"><div class="gd-label">LINE公式アカウント <span class="gd-optional">任意</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="line_consent" value="1"><span class="gd-check-box"></span><span class="gd-check-label">GALLERY DOTのLINEアカウントを友だち追加して在庫速報を受け取る</span></label></div></div>
-        <div class="gd-field"><div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="consent" value="1"><span class="gd-check-box"></span><span class="gd-check-label">個人情報の取り扱いに同意します<small>予約管理・来場チェックイン・特典引換目的のみ使用。会期終了後90日で削除。</small></span></label></div></div>
+
+        <!-- 同伴人数 -->
+        <div class="gd-field">
+          <label class="gd-label">同伴人数 <span class="gd-optional">任意・最大2名</span></label>
+          <div class="gd-counter">
+            <button type="button" class="gd-counter-btn" data-action="minus">−</button>
+            <div class="gd-counter-val">0</div>
+            <button type="button" class="gd-counter-btn" data-action="plus">+</button>
+          </div>
+        </div>
+
+        <div class="gd-divider"></div>
+
+        <!-- LINE -->
+        <div class="gd-field">
+          <div class="gd-label">LINE公式アカウント <span class="gd-optional">任意</span></div>
+          <div class="gd-check-group">
+            <label class="gd-check-item">
+              <input type="checkbox" name="line_consent" value="1">
+              <span class="gd-check-box"></span>
+              <span class="gd-check-label">GALLERY DOTのLINEを友だち追加して在庫速報を受け取る</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 規約同意 -->
+        <div class="gd-field">
+          <div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div>
+          <div class="gd-check-group">
+            <label class="gd-check-item">
+              <input type="checkbox" name="consent" value="1">
+              <span class="gd-check-box"></span>
+              <span class="gd-check-label">
+                個人情報の取り扱いに同意します
+                <small>予約管理・来場チェックイン・特典引換目的のみ使用。会期終了後90日で削除。</small>
+              </span>
+            </label>
+          </div>
+        </div>
+
         <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap"><button type="submit" class="gd-submit">来場予約する — 無料・3分</button></div>
+
+        <div class="gd-submit-wrap">
+          <button type="submit" class="gd-submit">来場予約する — 無料</button>
+        </div>
         <p class="gd-privacy-note">予約完了後、予約番号をメールでお送りします。</p>
-      </form>
-      <div class="gd-success"><div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div class="gd-success-ttl">予約が完了しました</div><p class="gd-success-sub">ご登録のメールアドレスに<br>予約番号をお送りしました。</p><div class="gd-success-id"></div></div>
-    </div>
-  </div>
 
-  <!-- トーク① -->
-  <div class="res-panel" id="panel-talk1" role="tabpanel">
-    <div id="form-talk1">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header"><div class="gd-form-event-name">「AFTER IMAGE と、10年のキュレーション」</div><div class="gd-form-event-meta"><span>1月11日（日）</span><span>17:00–18:15</span><span>定員40名</span></div></div>
-        <div class="gd-field"><label class="gd-label" for="t1-name">氏名 <span class="gd-required">必須</span></label><input class="gd-input" type="text" id="t1-name" name="name" placeholder="例：山田 太郎" autocomplete="name"><span class="gd-error-msg">氏名を入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="t1-email">メールアドレス <span class="gd-required">必須</span></label><input class="gd-input" type="email" id="t1-email" name="email" placeholder="例：taro@example.com" autocomplete="email"><span class="gd-error-msg">正しいメールアドレスを入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="t1-note">事前質問 <span class="gd-optional">任意</span></label><textarea class="gd-textarea" id="t1-note" name="note" placeholder="登壇者への質問があればご記入ください"></textarea></div>
-        <div class="gd-field"><div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="consent" value="1"><span class="gd-check-box"></span><span class="gd-check-label">個人情報の取り扱いに同意します</span></label></div></div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap"><button type="submit" class="gd-submit">トーク①を申し込む</button></div>
-        <p class="gd-privacy-note">定員40名。着席優先、立ち見の可能性あり。</p>
       </form>
-      <div class="gd-success"><div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div class="gd-success-ttl">申込が完了しました</div><p class="gd-success-sub">メールにて受付番号をお送りします。</p><div class="gd-success-id"></div></div>
-    </div>
-  </div>
 
-  <!-- トーク② -->
-  <div class="res-panel" id="panel-talk2" role="tabpanel">
-    <div id="form-talk2">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header"><div class="gd-form-event-name">「記憶・物質・イメージの残り方」</div><div class="gd-form-event-meta"><span>1月17日（土）</span><span>18:00–19:00</span><span>定員35名</span></div></div>
-        <div class="gd-field"><label class="gd-label" for="t2-name">氏名 <span class="gd-required">必須</span></label><input class="gd-input" type="text" id="t2-name" name="name" placeholder="例：山田 太郎" autocomplete="name"><span class="gd-error-msg">氏名を入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="t2-email">メールアドレス <span class="gd-required">必須</span></label><input class="gd-input" type="email" id="t2-email" name="email" placeholder="例：taro@example.com" autocomplete="email"><span class="gd-error-msg">正しいメールアドレスを入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="t2-note">質問・コメント <span class="gd-optional">任意</span></label><textarea class="gd-textarea" id="t2-note" name="note" placeholder="聞きたいテーマや素材・表現についてあればご記入ください"></textarea></div>
-        <div class="gd-field"><div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="consent" value="1"><span class="gd-check-box"></span><span class="gd-check-label">個人情報の取り扱いに同意します</span></label></div></div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap"><button type="submit" class="gd-submit">トーク②を申し込む</button></div>
-        <p class="gd-privacy-note">展示来場予約者優先。空席がある場合のみ当日受付あり。</p>
-      </form>
-      <div class="gd-success"><div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div class="gd-success-ttl">申込が完了しました</div><p class="gd-success-sub">メールにて受付番号をお送りします。</p><div class="gd-success-id"></div></div>
+      <!-- 完了画面 -->
+      <div class="gd-success">
+        <div class="gd-success-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="gd-success-ttl">予約が完了しました</div>
+        <p class="gd-success-sub">ご登録のメールアドレスに予約番号をお送りしました。<br>当日は入口でご提示ください。</p>
+        <div class="gd-success-id"></div>
+      </div>
     </div>
-  </div>
 
-  <!-- ライブ① -->
-  <div class="res-panel" id="panel-live1" role="tabpanel">
-    <div id="form-live1">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header"><div class="gd-form-event-name">「AFTER IMAGE / Light Trace」</div><div class="gd-form-event-meta"><span>1月18日（日）</span><span>18:30–19:10</span><span>定員30名</span></div></div>
-        <div class="gd-field"><label class="gd-label" for="l1-name">氏名 <span class="gd-required">必須</span></label><input class="gd-input" type="text" id="l1-name" name="name" placeholder="例：山田 太郎" autocomplete="name"><span class="gd-error-msg">氏名を入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="l1-email">メールアドレス <span class="gd-required">必須</span></label><input class="gd-input" type="email" id="l1-email" name="email" placeholder="例：taro@example.com" autocomplete="email"><span class="gd-error-msg">正しいメールアドレスを入力してください</span></div>
-        <div class="gd-field"><div class="gd-label">お子様連れ <span class="gd-optional">任意</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="with_child" value="1"><span class="gd-check-box"></span><span class="gd-check-label">未就学児を連れて参加（保護者同伴必須）</span></label></div></div>
-        <div class="gd-field"><div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="consent" value="1"><span class="gd-check-box"></span><span class="gd-check-label">個人情報の取り扱いに同意します</span></label></div></div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap"><button type="submit" class="gd-submit">ライブ①を申し込む</button></div>
-        <p class="gd-privacy-note">定員30名。撮影不可。未就学児は保護者同伴。</p>
-      </form>
-      <div class="gd-success"><div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div class="gd-success-ttl">申込が完了しました</div><p class="gd-success-sub">メールにて受付番号をお送りします。</p><div class="gd-success-id"></div></div>
-    </div>
   </div>
-
-  <!-- トーク③ -->
-  <div class="res-panel" id="panel-talk3" role="tabpanel">
-    <div id="form-talk3">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header"><div class="gd-form-event-name">「若手作家が語る "AFTER IMAGE"」</div><div class="gd-form-event-meta"><span>1月24日（土）</span><span>16:00–17:00</span><span>定員50名</span></div></div>
-        <div class="gd-field"><label class="gd-label" for="t3-name">氏名 <span class="gd-required">必須</span></label><input class="gd-input" type="text" id="t3-name" name="name" placeholder="例：山田 太郎" autocomplete="name"><span class="gd-error-msg">氏名を入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="t3-email">メールアドレス <span class="gd-required">必須</span></label><input class="gd-input" type="email" id="t3-email" name="email" placeholder="例：taro@example.com" autocomplete="email"><span class="gd-error-msg">正しいメールアドレスを入力してください</span></div>
-        <div class="gd-field"><label class="gd-label" for="t3-note">Q&amp;Aへの事前質問 <span class="gd-optional">任意</span></label><textarea class="gd-textarea" id="t3-note" name="note" placeholder="作家への質問を事前にお送りください"></textarea></div>
-        <div class="gd-field"><div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div><div class="gd-check-group"><label class="gd-check-item"><input type="checkbox" name="consent" value="1"><span class="gd-check-box"></span><span class="gd-check-label">個人情報の取り扱いに同意します</span></label></div></div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap"><button type="submit" class="gd-submit">トーク③を申し込む</button></div>
-        <p class="gd-privacy-note">予約推奨（当日参加可）。混雑時は予約者優先。</p>
-      </form>
-      <div class="gd-success"><div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div class="gd-success-ttl">申込が完了しました</div><p class="gd-success-sub">メールにて受付番号をお送りします。</p><div class="gd-success-id"></div></div>
-    </div>
-  </div>
-
 </section>
 
 <!-- ════════ ACCESS ════════ -->

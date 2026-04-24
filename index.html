@@ -145,40 +145,75 @@
 </div>
 
 <!-- ════════ GIFT ════════ -->
-<section class="gift" aria-labelledby="gift-h">
-  <div class="gift-glow" aria-hidden="true"></div>
-  <span class="scroll-num" aria-hidden="true">01</span>
-  <div class="s-eyebrow reveal-left">Special Gift</div>
-  <h2 class="s-ttl reveal-clip d-01" id="gift-h">予約で<br><em>もらえる。</em></h2>
-  <p class="s-body reveal d-02">
-    このページから来場予約→当日QRチェックインで、10周年記念マグカップを1名1点プレゼント。各日先着40個・なくなり次第終了。
-  </p>
-  <div class="mug-wrap reveal-scale d-015">
-    <img src="images/Cup.png" alt="GALLERY DOT 10周年記念マグカップ 黒・白2色" class="mug-img" width="390" height="260" loading="lazy">
-    <div class="mug-badge">黒・白 2色展開</div>
-  </div>
-  <div class="mug-cta-wrap reveal d-005">
-    <button class="btn-a btn-magnetic" data-scroll-to=".res-section">今すぐ無料予約 — 先着40個</button>
-  </div>
-  <div class="steps stagger-parent">
-    <div class="step stagger-child"><div class="step-num" aria-hidden="true">1</div><div><div class="step-title">このページから予約</div><div class="step-desc">予約完了後にQRコードをお送りします</div></div></div>
-    <div class="step stagger-child"><div class="step-num" aria-hidden="true">2</div><div><div class="step-title">当日 入口でQRスキャン</div><div class="step-desc">チェックインで来場を確認します</div></div></div>
-    <div class="step stagger-child"><div class="step-num" aria-hidden="true">3</div><div><div class="step-title">マグカップを受け取る</div><div class="step-desc">物販コーナーにてお渡し。色選択は先着順</div></div></div>
-  </div>
-  <div class="stock reveal d-03">
-    <div class="stock-hd">
-      <span class="stock-title">日別在庫状況</span>
-      <span class="stock-live"><span class="stock-live-dot" aria-hidden="true"></span>LIVE</span>
+<!-- ════════ GIFT ════════ -->
+<section class="gift-feature" aria-labelledby="gift-h">
+
+  <!-- 左: 写真 / 右: テキスト（PC左右分割） -->
+  <div class="gift-layout">
+
+    <!-- 写真カラム -->
+    <div class="gift-img-col">
+      <div class="gift-img-wrap">
+        <img src="images/Cup.png" alt="GALLERY DOT 10周年記念マグカップ 黒・白2色" class="gift-img" loading="lazy">
+        <div class="gift-img-label">
+          <span class="gift-img-label-eye">Limited</span>
+          <span class="gift-img-label-val">黒・白 2色展開</span>
+        </div>
+      </div>
     </div>
-    <div class="stock-row"><span class="stock-date">1/10（土）開幕日</span><span class="stock-num"><b data-count="28">0</b> / 40</span></div>
-    <div class="track"><div class="fill stock-fill-70"></div></div>
-    <div class="stock-row"><span class="stock-date">1/11（日）</span><span class="stock-num aq"><span data-count="38">0</span> / 40</span></div>
-    <div class="track"><div class="fill aq stock-fill-95"></div></div>
-    <div class="stock-row"><span class="stock-date">1/17（土）</span><span class="stock-num"><b data-count="22">0</b> / 40</span></div>
-    <div class="track"><div class="fill stock-fill-55"></div></div>
-    <p class="stock-note">※ 在庫はリアルタイム連動予定。数値はデモ表示です。</p>
+
+    <!-- テキストカラム -->
+    <div class="gift-text-col">
+      <div class="s-eyebrow reveal-left">Special Gift</div>
+      <h2 class="s-ttl reveal-clip" id="gift-h" style="transition-delay:0.1s">予約で<br><em>もらえる。</em></h2>
+      <p class="s-body reveal" style="transition-delay:0.2s">
+        このページから来場予約し、当日入口でQRをスキャンすると、10周年記念マグカップを1名1点プレゼント。各日先着40個・なくなり次第終了。
+      </p>
+
+      <!-- ステップ -->
+      <div class="gift-steps stagger-parent">
+        <div class="gift-step stagger-child">
+          <span class="gift-step-num">01</span>
+          <div>
+            <div class="gift-step-title">このページから予約</div>
+            <div class="gift-step-desc">完了後にQRコードが届きます</div>
+          </div>
+        </div>
+        <div class="gift-step stagger-child">
+          <span class="gift-step-num">02</span>
+          <div>
+            <div class="gift-step-title">当日 入口でQRスキャン</div>
+            <div class="gift-step-desc">チェックインで来場を確認します</div>
+          </div>
+        </div>
+        <div class="gift-step stagger-child">
+          <span class="gift-step-num">03</span>
+          <div>
+            <div class="gift-step-title">マグカップを受け取る</div>
+            <div class="gift-step-desc">物販コーナーにてお渡し。色選択は先着順</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 在庫 -->
+      <div class="gift-stock reveal" style="transition-delay:0.3s">
+        <div class="stock-hd">
+          <span class="stock-title">日別在庫状況</span>
+          <span class="stock-live"><span class="stock-live-dot" aria-hidden="true"></span>LIVE</span>
+        </div>
+        <div class="stock-row"><span class="stock-date">1/10（土）開幕日</span><span class="stock-num"><b data-count="28">0</b> / 40</span></div>
+        <div class="track"><div class="fill stock-fill-70"></div></div>
+        <div class="stock-row"><span class="stock-date">1/11（日）</span><span class="stock-num aq"><span data-count="38">0</span> / 40</span></div>
+        <div class="track"><div class="fill aq stock-fill-95"></div></div>
+        <div class="stock-row"><span class="stock-date">1/17（土）</span><span class="stock-num"><b data-count="22">0</b> / 40</span></div>
+        <div class="track"><div class="fill stock-fill-55"></div></div>
+        <p class="stock-note">※ 在庫はリアルタイム連動予定。数値はデモ表示です。</p>
+      </div>
+
+      <button class="btn-a reveal" style="transition-delay:0.15s;margin-top:28px" data-scroll-to=".res-section">今すぐ無料予約 — 先着40個</button>
+    </div>
+
   </div>
-  <button class="btn-a btn-magnetic reveal mt-26 d-01" data-scroll-to=".res-section">無料で来場予約する →</button>
 </section>
 
 <!-- STICKY 1 -->

@@ -10,7 +10,7 @@
      ★ GASのデプロイURLをここに貼り付けてください
      Gas→デプロイ→ウェブアプリのURLをコピー
      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-  var GAS_URL = 'https://script.google.com/macros/s/AKfycbzt-Jf4lAlPeIZkpIVToxM36jvtAOywTyHRG7Ldp16ZYV5fspzKS0ArXhTc4TLcIOSm/exec';
+  var GAS_URL = '【GASデプロイURL】';
 
   /* GASへPOSTするヘルパー */
   function postToGAS(data, callback) {
@@ -84,8 +84,9 @@
       btn.type = 'button';
       btn.className = 'gd-date-btn' + (d.soldOut ? ' sold-out' : '');
       btn.dataset.val = d.val;
-      btn.innerHTML = '<span class="date-d">' + d.label.split('（')[0].replace('1/','') + '</span>' +
-                      '<span class="date-label">' + d.label + (d.sub ? '<br>' + d.sub : '') + '</span>';
+      var sublabel = d.sub ? ' — ' + d.sub : '';
+      btn.innerHTML = '<span class="date-d">' + d.label + '</span>' +
+                      '<span class="date-label">' + sublabel + '</span>';
       if (!d.soldOut) {
         btn.addEventListener('click', function () {
           $$('.gd-date-btn', wrap).forEach(function (b) { b.classList.remove('selected'); });

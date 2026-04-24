@@ -6,7 +6,7 @@
   'use strict';
 
   /* ★ GASデプロイURLをここに貼り付け */
-  var GAS_URL = '【GASデプロイURL】';
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbzt-Jf4lAlPeIZkpIVToxM36jvtAOywTyHRG7Ldp16ZYV5fspzKS0ArXhTc4TLcIOSm/exec';
 
   function postToGAS(data, callback) {
     if (!GAS_URL || GAS_URL.indexOf('【') !== -1) {

@@ -2359,3 +2359,159 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
 .evt-reserve-btn[data-tab] {
   cursor: pointer;
 }
+
+/* ================================================
+   HERO: ジャンルバッジ / アーティスト帯 / 統計
+   ================================================ */
+
+/* ── A. ジャンルバッジ ── */
+.hero-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 18px;
+  opacity: 0;
+  animation: fadeRise 0.6s 0.35s var(--ease) forwards;
+}
+.hero-genre {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(240,238,233,0.65);
+  font-family: 'DM Sans', sans-serif;
+  backdrop-filter: blur(4px);
+  background: rgba(255,255,255,0.04);
+  transition: border-color 0.2s, color 0.2s;
+}
+.hero-genre:hover {
+  border-color: rgba(227,79,112,0.5);
+  color: var(--mist);
+}
+
+/* ── B. アーティスト帯 + 統計 ── */
+.hero-artists-bar {
+  background: rgba(12,12,15,0.92);
+  border-top: 1px solid var(--brd);
+  border-bottom: 1px solid var(--brd);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* アーティストサムネイル5人 */
+.artist-thumbs {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.artist-thumbs::-webkit-scrollbar { display: none; }
+
+.artist-thumb {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+.artist-thumb img {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 1px solid var(--brd);
+  filter: brightness(0.85) saturate(0.8);
+  transition: border-color 0.25s, filter 0.25s, transform 0.25s;
+}
+.artist-thumb:hover img {
+  border-color: var(--mg);
+  filter: brightness(1.0) saturate(1.0);
+  transform: scale(1.06);
+}
+.artist-thumb span {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--sl);
+  font-family: 'DM Sans', sans-serif;
+  white-space: nowrap;
+}
+
+/* 統計数字 */
+.exhibit-stats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--brd);
+}
+.exhibit-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+}
+.exhibit-stat-sep {
+  width: 1px;
+  height: 32px;
+  background: var(--brd);
+  flex-shrink: 0;
+}
+.exhibit-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.exhibit-stat-num.free {
+  font-size: 18px;
+  color: var(--mg);
+  letter-spacing: 0.04em;
+}
+.exhibit-stat-lbl {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  color: var(--sl);
+  text-transform: uppercase;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* PC: 横並びレイアウト */
+@media (min-width: 768px) {
+  .hero-artists-bar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    gap: 48px;
+  }
+  .artist-thumbs { gap: 20px; }
+  .artist-thumb img { width: 56px; height: 56px; }
+  .exhibit-stats {
+    padding-top: 0;
+    border-top: none;
+    border-left: 1px solid var(--brd);
+    padding-left: 48px;
+    gap: 0;
+    flex-shrink: 0;
+  }
+  .exhibit-stat { min-width: 64px; }
+  .exhibit-stat-num { font-size: 32px; }
+}
+
+/* hero-genre PC: 少し大きく */
+@media (min-width: 768px) {
+  .hero-genres { gap: 8px; margin-bottom: 20px; }
+  .hero-genre { font-size: 11px; padding: 5px 13px; }
+}

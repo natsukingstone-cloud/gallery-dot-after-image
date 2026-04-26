@@ -332,11 +332,24 @@
           <option>18:00</option>
         </select>
       </div>
-      <!-- イベント解除警告 -->
+      <!-- イベント解除警告 / イベント追加 -->
       <div id="event-warning" style="display:none;margin-bottom:16px;padding:14px 16px;background:rgba(227,79,112,0.08);border:1px solid rgba(227,79,112,0.3);border-radius:3px;">
         <p style="font-size:12px;color:#E34F70;font-weight:500;margin-bottom:6px;font-family:'DM Sans',sans-serif;letter-spacing:0.05em">⚠️ イベント予約について</p>
         <p id="event-warning-text" style="font-size:12px;color:#F0EEE9;line-height:1.7;font-family:'Noto Sans JP',sans-serif;font-weight:300"></p>
       </div>
+
+      <!-- 変更先にイベントがある場合：参加するか選べる -->
+      <div id="new-event-wrap" style="display:none;margin-bottom:16px;padding:14px 16px;background:rgba(58,167,201,0.06);border:1px solid rgba(58,167,201,0.25);border-radius:3px;">
+        <p style="font-size:11px;color:#3AA7C9;font-weight:500;margin-bottom:10px;font-family:'DM Sans',sans-serif;letter-spacing:0.12em;text-transform:uppercase">★ この日はイベントがあります</p>
+        <div id="new-event-check" style="display:flex;align-items:flex-start;gap:12px;cursor:pointer">
+          <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer">
+            <input type="checkbox" id="join-new-event" style="display:none">
+            <span id="new-event-box" style="width:20px;height:20px;flex-shrink:0;border:1px solid rgba(255,255,255,0.15);border-radius:3px;display:flex;align-items:center;justify-content:center;margin-top:1px;transition:all 0.2s;background:transparent"></span>
+            <span id="new-event-label" style="font-size:13px;color:#F0EEE9;line-height:1.6;font-family:'Noto Sans JP',sans-serif;font-weight:300"></span>
+          </label>
+        </div>
+      </div>
+
       <div style="display:flex;gap:10px">
         <button class="btn-primary" id="btn-submit-change" style="flex:1">変更を確定する</button>
         <button class="btn-cancel-no" id="btn-cancel-change" style="flex:0 0 80px">戻る</button>
@@ -478,11 +491,13 @@
     $('btn-submit-change').disabled = true;
     $('btn-submit-change').textContent = '変更中…';
 
-    /* 新しい日にイベントがない、または違うイベントの日 → イベントをクリア */
     var newDateEvent   = EVENT_DATES[newDate];
     var currentEvents  = currentReservation.talkEvents || [];
     var sameEvents     = newDateEvent && currentEvents.indexOf(newDateEvent.id) !== -1;
     var clearEvents    = currentEvents.length > 0 && !sameEvents;
+    /* 新しいイベントに申し込むか */
+    var joinNewEvent   = $('join-new-event') && $('join-new-event').checked;
+    var newEvents      = (joinNewEvent && newDateEvent) ? [newDateEvent.id] : [];
 
     callGAS({
       action: 'change',
@@ -490,7 +505,8 @@
       email: $('input-email').value.trim(),
       newDate: newDate,
       newTime: newTime,
-      clearEvents: clearEvents
+      clearEvents: clearEvents,
+      newEvents: newEvents
     }, function(res){
       $('btn-submit-change').disabled = false;
       $('btn-submit-change').textContent = '変更を確定する';
@@ -563,47 +579,74 @@
 
   /* ── イベントのある日付 ── */
   var EVENT_DATES = {
-    '01-11': { id:'talk1', label:'トーク①「AFTER IMAGE と、10年のキュレーション」(1/11)' },
-    '01-17': { id:'talk2', label:'トーク②「記憶・物質・イメージの残り方」(1/17)' },
-    '01-18': { id:'live1',  label:'ライブ①「AFTER IMAGE / Light Trace」(1/18)' },
-    '01-24': { id:'talk3', label:'トーク③「若手作家が語る "AFTER IMAGE"」(1/24)' },
-    '01-25': { id:'live2',  label:'ライブ②「Archive Body」(1/25)' }
+    '01-11': { id:'talk1', label:'トーク「AFTER IMAGE と、10年のキュレーション」', detail:'1/11（日）17:00–18:15 ／ 定員40名' },
+    '01-17': { id:'talk2', label:'トーク「記憶・物質・イメージの残り方」',         detail:'1/17（土）18:00–19:00 ／ 定員35名' },
+    '01-18': { id:'live1', label:'ライブ「AFTER IMAGE / Light Trace」',          detail:'1/18（日）18:30–19:10 ／ 定員30名' },
+    '01-24': { id:'talk3', label:'トーク「若手作家が語る "AFTER IMAGE"」',         detail:'1/24（土）16:00–17:00 ／ 定員50名' },
+    '01-25': { id:'live2', label:'ライブ「Archive Body」',                        detail:'1/25（日）17:30–18:00 ／ 予約不要' }
   };
 
-  /* 日付変更時にイベント警告を表示 */
+  /* 日付変更時：警告 or 新イベント選択を表示 */
   $('new-date').addEventListener('change', function(){
-    var newDate    = $('new-date').value;
-    var warning    = $('event-warning');
-    var warningTxt = $('event-warning-text');
-    if (!currentReservation || !currentReservation.talkEvents || !currentReservation.talkEvents.length) {
-      warning.style.display = 'none';
-      return;
-    }
-    /* 現在のイベントがある日付 */
-    var currentEvents = currentReservation.talkEvents;
-    /* 新しい来場日にイベントがあるか */
-    var newDateEvent = EVENT_DATES[newDate];
-    /* 現在のイベントと新しい日付が一致するか */
-    var sameEvents = newDateEvent && currentEvents.indexOf(newDateEvent.id) !== -1;
+    var newDate      = $('new-date').value;
+    var warning      = $('event-warning');
+    var warningTxt   = $('event-warning-text');
+    var newEventWrap = $('new-event-wrap');
+    var newEventLbl  = $('new-event-label');
+    var newEventBox  = $('new-event-box');
+    var joinCheck    = $('join-new-event');
 
-    if (currentEvents.length && !sameEvents) {
-      /* イベントがある日 → 別のイベントの日、またはイベントなしの日に変更 */
-      var currentLabels = currentEvents.map(function(id){
-        for (var d in EVENT_DATES) {
-          if (EVENT_DATES[d].id === id) return EVENT_DATES[d].label;
+    warning.style.display      = 'none';
+    newEventWrap.style.display = 'none';
+    joinCheck.checked          = false;
+    newEventBox.style.background = 'transparent';
+    newEventBox.innerHTML = '';
+
+    var currentEvents = (currentReservation && currentReservation.talkEvents) || [];
+    var newDateEvent  = EVENT_DATES[newDate];
+
+    if (currentEvents.length > 0) {
+      /* 現在イベントあり → 別の日または別イベントに変更 */
+      var sameEvents = newDateEvent && currentEvents.indexOf(newDateEvent.id) !== -1;
+      if (!sameEvents) {
+        var currentLabels = currentEvents.map(function(id){
+          for (var d in EVENT_DATES) { if (EVENT_DATES[d].id === id) return EVENT_DATES[d].label; }
+          return id;
+        });
+        var msg = '現在「' + currentLabels.join('」「') + '」にご参加予定です。';
+        if (newDateEvent) {
+          msg += '<br>変更後の日には別のイベントがあります。元のイベント予約は自動的にキャンセルされます。下のチェックで新しいイベントにも申し込めます。';
+          warningTxt.innerHTML = msg;
+          warning.style.display = 'block';
+          /* 新イベント選択を表示 */
+          newEventLbl.innerHTML = '<strong>' + newDateEvent.label + '</strong><br><small style="color:#6B7280">' + newDateEvent.detail + '</small>';
+          newEventWrap.style.display = 'block';
+        } else {
+          msg += '<br>変更後の日にはイベントがないため、元のイベント予約は自動的にキャンセルされます。';
+          warningTxt.innerHTML = msg;
+          warning.style.display = 'block';
         }
-        return id;
-      });
-      var msg = '現在「' + currentLabels.join('」「') + '」にご参加予定です。';
-      if (newDateEvent) {
-        msg += '<br>変更後の ' + newDate.replace('01-','1/') + ' には別のイベントがあります。元のイベント予約は自動的にキャンセルされます。新しい日のイベントに参加する場合は、変更後に予約フォームから改めてお申し込みください。';
-      } else {
-        msg += '<br>変更後の ' + newDate.replace('01-','1/') + ' にはイベントがないため、元のイベント予約は自動的にキャンセルされます。';
       }
-      warningTxt.innerHTML = msg;
-      warning.style.display = 'block';
-    } else {
-      warning.style.display = 'none';
+    } else if (newDateEvent) {
+      /* 現在イベントなし → イベントある日に変更 */
+      newEventLbl.innerHTML = '<strong>' + newDateEvent.label + '</strong><br><small style="color:#6B7280">' + newDateEvent.detail + '</small>';
+      newEventWrap.style.display = 'block';
+    }
+  });
+
+  /* チェックボックスのビジュアル更新 */
+  document.addEventListener('change', function(e){
+    if (e.target && e.target.id === 'join-new-event') {
+      var box = $('new-event-box');
+      if (e.target.checked) {
+        box.style.background = '#E34F70';
+        box.style.borderColor = '#E34F70';
+        box.innerHTML = '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1 4 4 7 9 1" stroke="white" stroke-width="1.5"/></svg>';
+      } else {
+        box.style.background = 'transparent';
+        box.style.borderColor = 'rgba(255,255,255,0.15)';
+        box.innerHTML = '';
+      }
     }
   });
 

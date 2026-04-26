@@ -583,7 +583,7 @@
     '01-17': { id:'talk2', label:'トーク「記憶・物質・イメージの残り方」',         detail:'1/17（土）18:00–19:00 ／ 定員35名' },
     '01-18': { id:'live1', label:'ライブ「AFTER IMAGE / Light Trace」',          detail:'1/18（日）18:30–19:10 ／ 定員30名' },
     '01-24': { id:'talk3', label:'トーク「若手作家が語る "AFTER IMAGE"」',         detail:'1/24（土）16:00–17:00 ／ 定員50名' },
-    '01-25': { id:'live2', label:'ライブ「Archive Body」',                        detail:'1/25（日）17:30–18:00 ／ 予約不要' }
+    '01-25': { id:'live2', label:'ライブ「Archive Body」',                        detail:'1/25（日）17:30–18:00 ／ 予約不要・当日観覧可', noReserve:true }
   };
 
   /* 日付変更時：警告 or 新イベント選択を表示 */
@@ -620,7 +620,15 @@
           warning.style.display = 'block';
           /* 新イベント選択を表示 */
           newEventLbl.innerHTML = '<strong>' + newDateEvent.label + '</strong><br><small style="color:#6B7280">' + newDateEvent.detail + '</small>';
-          newEventWrap.style.display = 'block';
+          if (!newDateEvent.noReserve) {
+            newEventWrap.style.display = 'block';
+          } else {
+            /* 予約不要イベントは情報のみ */
+            newEventLbl.innerHTML = newDateEvent.label + '<br><small style="color:#3AA7C9">' + newDateEvent.detail + '</small>';
+            newEventWrap.style.display = 'block';
+            $('join-new-event').disabled = true;
+            $('new-event-box').innerHTML = '<span style="font-size:9px;color:#3AA7C9">予約不要</span>';
+          }
         } else {
           msg += '<br>変更後の日にはイベントがないため、元のイベント予約は自動的にキャンセルされます。';
           warningTxt.innerHTML = msg;
@@ -629,8 +637,16 @@
       }
     } else if (newDateEvent) {
       /* 現在イベントなし → イベントある日に変更 */
-      newEventLbl.innerHTML = '<strong>' + newDateEvent.label + '</strong><br><small style="color:#6B7280">' + newDateEvent.detail + '</small>';
-      newEventWrap.style.display = 'block';
+      if (!newDateEvent.noReserve) {
+        newEventLbl.innerHTML = '<strong>' + newDateEvent.label + '</strong><br><small style="color:#6B7280">' + newDateEvent.detail + '</small>';
+        newEventWrap.style.display = 'block';
+      } else {
+        /* 1/25 など予約不要イベント：情報表示のみ */
+        newEventWrap.style.display = 'block';
+        newEventLbl.innerHTML = newDateEvent.label + '<br><small style="color:#3AA7C9">' + newDateEvent.detail + '</small>';
+        $('join-new-event').disabled = true;
+        $('new-event-box').innerHTML = '<span style="font-size:9px;color:#3AA7C9;letter-spacing:0.1em">予約不要</span>';
+      }
     }
   });
 

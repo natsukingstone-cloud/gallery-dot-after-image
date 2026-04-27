@@ -2770,3 +2770,76 @@ html, body {
   transform: translateY(100%);
   pointer-events: none;
 }
+
+/* ================================================
+   FEEDBACK FIXES: outline btn / dot colors / hero slides
+   ================================================ */
+
+/* ── ギフトCTAボタン：アウトライン（ピンク枠+文字） ── */
+.btn-outline-mg {
+  display: block; width: 100%;
+  background: transparent;
+  color: var(--mg);
+  border: 1px solid var(--mg);
+  padding: 17px 24px; font-size: 13px; font-weight: 400;
+  letter-spacing: 0.08em; text-align: center;
+  cursor: pointer; border-radius: 2px;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-outline-mg:hover {
+  background: rgba(227,79,112,0.1);
+}
+
+/* ── イベントぽちをアクアに（ピンクと区別） ── */
+.date-event-dot { background: var(--aq) !important; }
+.date-legend-dot.aq { background: var(--aq); }
+
+/* ── ヒーロー画像スライド ── */
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  filter: brightness(0.35) saturate(0.7);
+}
+.hero-slide.active { opacity: 1; }
+
+/* スライドドット */
+.hero-slide-dots {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
+  display: flex;
+  gap: 6px;
+}
+.hero-slide-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(240,238,233,0.3);
+  transition: background 0.3s;
+}
+.hero-slide-dot.active { background: rgba(240,238,233,0.9); }
+
+/* hero-artists-bar: thumbsなくなったのでレイアウト調整 */
+.hero-artists-bar {
+  justify-content: flex-end;
+}
+.exhibit-stats {
+  border-left: none;
+  padding-left: 0;
+}
+@media (min-width: 768px) {
+  .exhibit-stats {
+    border-left: 1px solid var(--brd);
+    padding-left: 32px;
+  }
+}

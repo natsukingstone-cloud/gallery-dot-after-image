@@ -280,3 +280,18 @@ document.addEventListener('DOMContentLoaded', function () {
       if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
     }, { passive:true });
   }
+  /* ── Hero artwork slideshow ── */
+  (function(){
+    var slides = document.querySelectorAll('.hero-slide');
+    var dots   = document.querySelectorAll('.hero-slide-dot');
+    if (!slides.length) return;
+    var cur = 0;
+    function goTo(n) {
+      slides[cur].classList.remove('active');
+      dots[cur] && dots[cur].classList.remove('active');
+      cur = (n + slides.length) % slides.length;
+      slides[cur].classList.add('active');
+      dots[cur] && dots[cur].classList.add('active');
+    }
+    setInterval(function(){ goTo(cur + 1); }, 4000);
+  })();

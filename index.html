@@ -54,7 +54,21 @@
 
 <!-- ════════ HERO ════════ -->
 <section class="hero" id="top">
-  <div class="hero-bg" role="img" aria-label="折原 柚衣《Afterglow #07》"></div>
+  <!-- TOP artwork slideshow -->
+  <div class="hero-slides" aria-hidden="true">
+    <div class="hero-slide active" style="background-image:url('images/Orihara.png')"></div>
+    <div class="hero-slide" style="background-image:url('images/NORI.png')"></div>
+    <div class="hero-slide" style="background-image:url('images/saeki.png')"></div>
+    <div class="hero-slide" style="background-image:url('images/Hanna.png')"></div>
+    <div class="hero-slide" style="background-image:url('images/Sakai_Naoto.png')"></div>
+  </div>
+  <div class="hero-slide-dots" aria-hidden="true">
+    <span class="hero-slide-dot active"></span>
+    <span class="hero-slide-dot"></span>
+    <span class="hero-slide-dot"></span>
+    <span class="hero-slide-dot"></span>
+    <span class="hero-slide-dot"></span>
+  </div>
   <div class="hero-vignette" aria-hidden="true"></div>
   <div class="hero-content">
     <div class="hero-badge">
@@ -123,30 +137,7 @@
 
 <!-- ARTIST STRIP + STATS -->
 <div class="hero-artists-bar">
-  <!-- アーティスト5名サムネイル -->
-  <div class="artist-thumbs">
-    <div class="artist-thumb">
-      <img src="images/Orihara.png" alt="折原 柚衣">
-      <span>折原 柚衣</span>
-    </div>
-    <div class="artist-thumb">
-      <img src="images/NORI.png" alt="NORI">
-      <span>NORI</span>
-    </div>
-    <div class="artist-thumb">
-      <img src="images/saeki.png" alt="佐伯 凛">
-      <span>佐伯 凛</span>
-    </div>
-    <div class="artist-thumb">
-      <img src="images/Hanna.png" alt="Hanna K.">
-      <span>Hanna K.</span>
-    </div>
-    <div class="artist-thumb">
-      <img src="images/Sakai_Naoto.png" alt="境 直斗">
-      <span>境 直斗</span>
-    </div>
-  </div>
-  <!-- 展示規模の数字 -->
+  <!-- アーティスト5名サムネイル --><!-- 展示規模の数字 -->
   <div class="exhibit-stats">
     <div class="exhibit-stat"><span class="exhibit-stat-num">5</span><span class="exhibit-stat-lbl">Artists</span></div>
     <div class="exhibit-stat-sep"></div>
@@ -233,7 +224,7 @@
         <p class="stock-note">※ 在庫はリアルタイム連動予定。数値はデモ表示です。</p>
       </div>
 
-      <button class="btn-a reveal" style="transition-delay:0.15s;margin-top:28px" data-scroll-to=".res-section">今すぐ無料予約 — 先着40個</button>
+      <button class="btn-outline-mg" style="margin-top:28px" data-scroll-to=".res-section">今すぐ無料予約 — 先着40個</button>
     </div>
 
   </div>
@@ -294,9 +285,6 @@
     <p class="s-body stagger-child">5名の作家が「残像」というテーマのもとに集まります。</p>
   </div>
 
-  <!-- Artists Slider -->
-  <div class="artists-slider-wrap">
-  <div class="artists-slider">
   <!-- Artist 01 — 折原 柚衣 -->
   <div class="artist-feature reveal-scale">
     <div class="af-img-wrap">
@@ -373,10 +361,8 @@
       <p class="af-work">《After Silence》2025</p>
       <p class="af-desc">音が止んだあとに耳が捉える残響。無響室とギャラリー空間の差異を使い、「聴覚的な残像」を体験させる没入型インスタレーション。</p>
     </div>
-  </div><!-- artist-feature -->
-  </div><!-- artists-slider -->
-  <div class="slider-nav" id="artist-dots"></div>
-  </div><!-- artists-slider-wrap -->
+  </div><!-- af-info -->
+  </div><!-- artist-feature 05 -->
 
 </section>
 <!-- ════════ SCHEDULE + EVENT RESERVE ════════ -->
@@ -532,7 +518,7 @@
           <div class="gd-label">来場日を選択 <span class="gd-required">必須</span></div>
         </div>
         <div class="gd-date-grid" id="u-date-grid"></div>
-        <p class="date-legend"><span class="date-legend-dot"></span> イベントのある日</p>
+        <p class="date-legend"><span class="date-legend-dot aq"></span> イベントのある日</p>
 
         <!-- 時間帯（日付選択後に表示） -->
         <div class="gd-field gd-time-slot-wrap" id="u-time-wrap" style="display:none">

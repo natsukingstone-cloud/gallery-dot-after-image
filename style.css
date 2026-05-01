@@ -69,24 +69,8 @@ body::after{
 }
 .hero-bg{
   position:absolute;inset:0;
-  transform:scale(1.1);will-change:transform;
-}
-.hero-slide{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center center;
-  filter:brightness(0.38) contrast(1.1);
-  opacity:0;
-  animation:heroFade 25s infinite;
-}
-.hero-slide:nth-child(1){animation-delay:0s;}
-.hero-slide:nth-child(2){animation-delay:5s;}
-.hero-slide:nth-child(3){animation-delay:10s;}
-.hero-slide:nth-child(4){animation-delay:15s;}
-.hero-slide:nth-child(5){animation-delay:20s;}
-@keyframes heroFade{
-  0%,4%{opacity:0}
-  8%,72%{opacity:1}
-  80%,100%{opacity:0}
+  background:url('images/Orihara.png') center top/cover no-repeat;
+  filter:brightness(0.38) contrast(1.1);transform:scale(1.1);will-change:transform;
 }
 .hero-vignette{
   position:absolute;inset:0;
@@ -846,14 +830,14 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
 .gd-submit-wrap { padding:8px 22px 28px; }
 .gd-submit {
   display:block;width:100%;
-  background:#000;color:var(--mg);border:1.5px solid var(--mg);
+  background:var(--mg);color:#fff;border:none;
   padding:18px;font-size:14px;font-weight:500;
   letter-spacing:0.05em;text-align:center;
   cursor:pointer;border-radius:3px;
   font-family:'DM Sans',sans-serif;
-  transition:transform 0.15s,background 0.2s,color 0.2s;
+  transition:transform 0.15s,opacity 0.15s;
 }
-.gd-submit:hover { background:var(--mg);color:#fff; }
+.gd-submit:hover { opacity:0.9; }
 .gd-submit:active { transform:scale(0.98); }
 .gd-submit:disabled { opacity:0.4;cursor:not-allowed; }
 
@@ -1120,7 +1104,7 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   /* SCHEDULE — 2-column */
   .sched {
     padding: 100px 60px;
-    max-width: 800px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .sched-header-row {
@@ -1227,7 +1211,7 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   .concept { padding: 120px 80px; }
   .artists-hd { padding: 0 80px; }
   .inline-cta-link { margin: 22px 80px 0; }
-  .sched { padding: 120px 80px; max-width: 800px; }
+  .sched { padding: 120px 80px; max-width: 1400px; }
   .res-section { padding: 120px 80px; }
   .res-inner { max-width: 1400px; }
   .access-info { padding: 100px 80px; }
@@ -1328,7 +1312,7 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   .faq-history-grid .faq { padding: 0; }
   .faq-history-grid .history { padding: 0; background: transparent; }
   .res-section { padding: 100px 60px !important; }
-  .sched { max-width: 800px; margin: 0 auto; }
+  .sched { max-width: 1200px; margin: 0 auto; }
 }
 
 /* ================================================
@@ -1549,6 +1533,8 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
    ================================================ */
 .artists-intro.container-pad {
   padding: 80px 24px 48px;
+  max-width: 860px;
+  margin: 0 auto;
 }
 
 /* 各アーティストブロック */
@@ -1759,26 +1745,7 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
 /* PC: 少し広く */
 @media (min-width: 768px) {
   .faq    { padding: 100px 60px; max-width: 900px; }
-  .history{ padding: 100px 60px; max-width: 860px; text-align: left; }
-  /* PC: 年号と説明を2カラムに */
-  .tl { padding-left: 0; }
-  .tl::before { display: none; }
-  .tl-item {
-    display: grid;
-    grid-template-columns: 100px 1fr;
-    gap: 32px;
-    align-items: baseline;
-    padding: 0 0 0 0;
-    border-top: 1px solid var(--brd);
-    padding: 20px 0;
-  }
-  .tl-item::before { display: none; }
-  .tl-yr {
-    font-size: 26px;
-    text-align: right;
-    margin-bottom: 0;
-  }
-  .tl-desc { font-size: 14px; }
+  .history{ padding: 100px 60px; max-width: 900px; }
   /* faq-history-grid は解除済みなので grid: none */
   .faq-history-grid { display: block !important; }
 }
@@ -2028,17 +1995,10 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   align-items: center;
 }
 .fcta-btns .btn-a {
-  max-width: 260px;
+  max-width: 400px;
   margin: 0 auto;
-  font-size: 14px !important;
-  padding: 18px 28px !important;
-  background: #000 !important;
-  color: var(--mg) !important;
-  border: 1.5px solid var(--mg) !important;
-}
-.fcta-btns .btn-a:hover {
-  background: var(--mg) !important;
-  color: #fff !important;
+  font-size: 15px !important;
+  padding: 22px 32px !important;
 }
 .fcta-btns .btn-b {
   max-width: 320px;
@@ -2068,15 +2028,10 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   font-weight: 600 !important;
   letter-spacing: 0.06em !important;
   padding: 20px !important;
-  background: #000 !important;
-  color: var(--mg) !important;
-  border: 1.5px solid var(--mg) !important;
-  box-shadow: 0 0 12px rgba(227,79,112,0.15);
-  transition: background 0.2s, color 0.2s, box-shadow 0.3s ease, transform 0.15s !important;
+  box-shadow: 0 0 20px rgba(227,79,112,0.3);
+  transition: box-shadow 0.3s ease, transform 0.15s !important;
 }
 .gd-submit:hover:not(:disabled) {
-  background: var(--mg) !important;
-  color: #fff !important;
   box-shadow: 0 0 32px rgba(227,79,112,0.5);
   transform: translateY(-1px);
 }
@@ -2611,14 +2566,9 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  overflow: visible;
 }
 .simple-footer img {
   opacity: 0.5;
-  max-width: 200px;
-  width: auto;
-  height: auto;
-  overflow: visible;
 }
 .simple-footer-copy {
   font-family: 'DM Sans', sans-serif;
@@ -2655,115 +2605,14 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   border-radius: 3px;
   font-family: 'DM Sans', sans-serif;
 }
-/* ================================================
-   追加修正: 凡例・住所・白文字・ボタン
-   ================================================ */
-
-/* カレンダー凡例 */
-.gd-cal-legend {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 6px 22px 4px;
-}
-.gd-legend-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 9px;
-  color: var(--aq);
-  font-family: 'DM Sans', sans-serif;
-  letter-spacing: 0.06em;
-}
-.gd-legend-dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.2);
-  flex-shrink: 0;
-}
-.gd-legend-dot.aq { background: var(--aq); }
-
-/* イベントドット */
-.date-event-dot {
-  display: inline-block;
-  width: 5px; height: 5px;
-  background: var(--aq);
-  border-radius: 50%;
-  margin-left: 4px;
-  vertical-align: middle;
-  flex-shrink: 0;
-}
-
-/* ヒーロー住所: 営業時間と同色・小さく */
-.hero-address {
-  font-size: 9px !important;
-  color: var(--off) !important;
-  margin-bottom: 24px !important;
-}
-
-/* 白文字を少し暗めに統一 */
-.hero-ttl { color: var(--mist) !important; }
-.sticky-title { color: var(--mist) !important; }
-.s-ttl { color: var(--mist) !important; }
-.blockq { color: var(--mist) !important; }
-
-/* ================================================
-   全体の白文字を少し暗めに統一
-   ================================================ */
-.hero-ttl,
-.sticky-title,
-.s-ttl,
-.blockq,
-.gd-date-btn .date-d,
-.gd-success-ttl,
-.gd-form-event-name,
-.tl-desc,
-.fq,
-.fa-inner,
-.ac-txt strong,
-.evt-ttl,
-.gift-step-title,
-.gift-img-label-val,
-.gift-step-num,
-.step-title,
-.fcta-ttl { color: rgba(240,238,233,0.88) !important; }
-
-/* ================================================
-   全ボタンにホバーエフェクト統一
-   ================================================ */
-
-/* btn-a: アウトライン→塗りつぶし */
-.btn-a {
-  transition: background 0.2s, color 0.2s, box-shadow 0.3s, transform 0.2s !important;
-}
-.btn-a:hover {
-  background: var(--mg) !important;
-  color: #fff !important;
-  box-shadow: 0 0 28px rgba(227,79,112,0.45) !important;
-  transform: translateY(-1px) !important;
-}
-
-/* btn-b: 枠線がピンクに */
-.btn-b {
-  transition: border-color 0.2s, color 0.2s, opacity 0.2s !important;
-}
-.btn-b:hover {
-  border-color: rgba(227,79,112,0.5) !important;
-  color: var(--mg) !important;
-  opacity: 1 !important;
-}
-
-/* fixed-cta-btn: 塗りつぶし */
-.fixed-cta-btn {
-  transition: background 0.2s, color 0.2s !important;
-}
-.fixed-cta-btn:hover {
-  background: var(--mg) !important;
-  color: #fff !important;
-}
-
-/* nav-btn: グロー強化 */
-.nav-btn:hover {
-  box-shadow: 0 0 28px rgba(227,79,112,0.6) !important;
-  transform: translateY(-1px) !important;
+/* PC: fixed-cta-btn 幅を制限 */
+@media (min-width: 768px) {
+  .fixed-cta {
+    display: flex;
+    justify-content: center;
+    padding: 12px 60px 20px;
+  }
+  .fixed-cta-btn {
+    max-width: 360px;
+  }
 }

@@ -69,8 +69,24 @@ body::after{
 }
 .hero-bg{
   position:absolute;inset:0;
-  background:url('images/Orihara.png') center top/cover no-repeat;
-  filter:brightness(0.38) contrast(1.1);transform:scale(1.1);will-change:transform;
+  transform:scale(1.1);will-change:transform;
+}
+.hero-slide{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center center;
+  filter:brightness(0.38) contrast(1.1);
+  opacity:0;
+  animation:heroFade 25s infinite;
+}
+.hero-slide:nth-child(1){animation-delay:0s;}
+.hero-slide:nth-child(2){animation-delay:5s;}
+.hero-slide:nth-child(3){animation-delay:10s;}
+.hero-slide:nth-child(4){animation-delay:15s;}
+.hero-slide:nth-child(5){animation-delay:20s;}
+@keyframes heroFade{
+  0%,4%{opacity:0}
+  8%,72%{opacity:1}
+  80%,100%{opacity:0}
 }
 .hero-vignette{
   position:absolute;inset:0;
@@ -2605,7 +2621,20 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
   border-radius: 3px;
   font-family: 'DM Sans', sans-serif;
 }
-/* PC: fixed-cta-btn 幅を制限 */
+/* ================================================
+   修正: ボタン・ドット・凡例・住所
+   ================================================ */
+
+/* fixed-cta-btn: ホバーエフェクト追加 */
+.fixed-cta-btn {
+  transition: background 0.2s, color 0.2s !important;
+}
+.fixed-cta-btn:hover {
+  background: var(--mg) !important;
+  color: #fff !important;
+}
+
+/* PC: fixed-cta幅を制限・センター */
 @media (min-width: 768px) {
   .fixed-cta {
     display: flex;
@@ -2616,3 +2645,133 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
     max-width: 360px;
   }
 }
+
+/* イベントドット: アクア色に */
+.date-event-dot {
+  background: var(--aq) !important;
+}
+
+/* カレンダー凡例 */
+.gd-cal-legend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 22px 4px;
+}
+.gd-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  color: var(--aq);
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.06em;
+}
+.gd-legend-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  flex-shrink: 0;
+}
+.gd-legend-dot.aq { background: var(--aq); }
+
+/* ヒーロー住所: 小さく・同色に */
+.hero-address {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9px !important;
+  color: var(--off) !important;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-family: 'DM Sans', sans-serif;
+}
+.hero-address svg { flex-shrink: 0; color: var(--mg); }
+
+/* ================================================
+   参加アーティスト: 左寄せ修正
+   ================================================ */
+.artists-intro.container-pad {
+  text-align: left !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* ================================================
+   History PC: 年号｜説明の2カラム・センター
+   ================================================ */
+@media (min-width: 768px) {
+  .history {
+    padding: 100px 60px;
+    max-width: 860px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .tl { padding-left: 0; }
+  .tl::before { display: none; }
+  .tl-item {
+    display: grid !important;
+    grid-template-columns: 100px 1fr;
+    gap: 32px;
+    align-items: baseline;
+    padding: 20px 0 !important;
+    border-top: 1px solid var(--brd);
+  }
+  .tl-item::before { display: none !important; }
+  .tl-yr {
+    font-size: 26px !important;
+    text-align: right;
+    margin-bottom: 0;
+  }
+  .tl-desc { font-size: 14px !important; }
+}
+
+/* ================================================
+   フォーム送信ボタン: 黒背景・ピンク枠・ピンク文字
+   ================================================ */
+.gd-submit {
+  background: #000 !important;
+  color: var(--mg) !important;
+  border: 1.5px solid var(--mg) !important;
+  box-shadow: none !important;
+}
+.gd-submit:hover:not(:disabled) {
+  background: var(--mg) !important;
+  color: #fff !important;
+  box-shadow: 0 0 24px rgba(227,79,112,0.4) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* アーティスト名: 少し暗めに */
+.sticky-title {
+  color: rgba(240,238,233,0.88) !important;
+}
+
+/* スケジュール: PCでセンター配置 */
+@media (min-width: 768px) {
+  .sched {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+/* ================================================
+   全体の白文字を少し暗めに統一
+   ================================================ */
+.hero-ttl,
+.sticky-title,
+.s-ttl,
+.blockq,
+.evt-ttl,
+.evt-d,
+.gd-success-ttl,
+.gd-form-event-name,
+.af-name,
+.fcta-ttl,
+.gift-step-title,
+.gift-img-label-val,
+.tl-yr,
+.fq,
+.gd-counter-val,
+.stock-num { color: rgba(240,238,233,0.88) !important; }

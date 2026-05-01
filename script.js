@@ -175,11 +175,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  /* ── 11. EVT RESERVE BUTTONS → scroll to unified reservation form ── */
+  /* ── 11. EVT RESERVE BUTTONS → jump to reservation tab ── */
   document.querySelectorAll('.evt-reserve-btn[data-tab]').forEach(function (btn) {
     btn.addEventListener('click', function () {
+      var tabId = btn.dataset.tab;
       var resSection = document.querySelector('.res-section');
       if (resSection) resSection.scrollIntoView({ behavior: 'smooth' });
+      setTimeout(function () {
+        var tab = document.querySelector('.res-tab[data-tab="' + tabId + '"]');
+        if (tab) tab.click();
+      }, 600);
     });
   });
 
@@ -205,93 +210,3 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var gformWrap = document.querySelector('.gform-wrap');
   if (gformWrap) gformIo.observe(gformWrap);
-  /* ── Fixed bottom CTA: show after hero ── */
-  var fixedCta     = document.getElementById('fixed-cta');
-  var heroSection  = document.querySelector('.hero');
-  var resSection   = document.querySelector('.res-section');
-  if (fixedCta) {
-    var ctaIo = new IntersectionObserver(function(entries) {
-      entries.forEach(function(e) {
-        /* Show after hero passes, hide when reservation form is visible */
-        if (!e.isIntersecting && e.target === heroSection) {
-          fixedCta.classList.add('visible');
-        } else if (e.isIntersecting && e.target === heroSection) {
-          fixedCta.classList.remove('visible');
-        }
-        if (e.isIntersecting && e.target === resSection) {
-          fixedCta.classList.remove('visible');
-        } else if (!e.isIntersecting && e.target === resSection && !heroSection.getBoundingClientRect().bottom > 0) {
-          fixedCta.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1 });
-    if (heroSection)  ctaIo.observe(heroSection);
-    if (resSection)   ctaIo.observe(resSection);
-    /* Fixed CTA button scroll */
-    fixedCta.querySelector('.fixed-cta-btn').addEventListener('click', function(){
-      if (resSection) resSection.scrollIntoView({ behavior: 'smooth' });
-    });
-  }
-
-  /* ── Artists slider ── */
-  var sliderWrap  = document.querySelector('.artists-slider');
-  var dotsWrap    = document.getElementById('artist-dots');
-  if (sliderWrap) {
-    var cards = Array.from(sliderWrap.querySelectorAll('.artist-feature'));
-    var total = cards.length;
-    var current = 0;
-
-    /* Create dots */
-    if (dotsWrap) {
-      cards.forEach(function(_, i) {
-        var dot = document.createElement('button');
-        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'アーティスト ' + (i+1));
-        dot.addEventListener('click', function(){ goTo(i); });
-        dotsWrap.appendChild(dot);
-      });
-    }
-
-    /* Create arrows */
-    var arrowWrap = document.createElement('div');
-    arrowWrap.className = 'slider-arrows';
-    arrowWrap.innerHTML =
-      '<button class="slider-arrow" id="arrow-prev">&#8592;</button>' +
-      '<button class="slider-arrow" id="arrow-next">&#8594;</button>';
-    sliderWrap.parentNode.insertBefore(arrowWrap, sliderWrap.nextSibling);
-    document.getElementById('arrow-prev').addEventListener('click', function(){ goTo(current - 1); });
-    document.getElementById('arrow-next').addEventListener('click', function(){ goTo(current + 1); });
-
-    function goTo(n) {
-      current = (n + total) % total;
-      sliderWrap.style.transform = 'translateX(-' + (current * 100) + '%)';
-      if (dotsWrap) {
-        Array.from(dotsWrap.querySelectorAll('.slider-dot')).forEach(function(d, i) {
-          d.classList.toggle('active', i === current);
-        });
-      }
-    }
-
-    /* Touch/swipe support */
-    var touchStartX = 0;
-    sliderWrap.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, { passive:true });
-    sliderWrap.addEventListener('touchend', function(e){
-      var diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-    }, { passive:true });
-  }
-  /* ── Hero artwork slideshow ── */
-  (function(){
-    var slides = document.querySelectorAll('.hero-slide');
-    var dots   = document.querySelectorAll('.hero-slide-dot');
-    if (!slides.length) return;
-    var cur = 0;
-    function goTo(n) {
-      slides[cur].classList.remove('active');
-      dots[cur] && dots[cur].classList.remove('active');
-      cur = (n + slides.length) % slides.length;
-      slides[cur].classList.add('active');
-      dots[cur] && dots[cur].classList.add('active');
-    }
-    setInterval(function(){ goTo(cur + 1); }, 4000);
-  })();

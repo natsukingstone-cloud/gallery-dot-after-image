@@ -2,9 +2,6 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="images/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO -->
@@ -32,6 +29,9 @@
   <meta name="twitter:site"        content="@gallery_dot">
 
   <!-- Favicon -->
+  <link rel="icon"             href="favicon.ico"        sizes="any">
+  <link rel="icon"             href="images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="images/favicon.png">
 
   <!-- Web Fonts（非同期読み込み） -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,15 +51,22 @@
 <div id="prog"><div id="prog-fill"></div></div>
 
 <!-- NAV -->
-<nav>
+<nav class="site-nav">
   <div class="nav-logo">
     <img src="images/gallery_dot_logo.png" alt="GALLERY DOT" width="120" height="20">
+  </div>
+  <div class="nav-links" role="navigation" aria-label="メインナビ">
+    <a href="#concept" class="nav-link">Concept</a>
+    <a href="#artists" class="nav-link">Artists</a>
+    <a href="#schedule" class="nav-link">Schedule</a>
+    <a href="#access" class="nav-link">Access</a>
+    <a href="#reservation" class="nav-link">Reserve</a>
   </div>
   <button class="nav-btn" data-scroll-to=".res-section">来場予約する</button>
 </nav>
 
 <!-- ════════ HERO ════════ -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-bg" role="img" aria-label="折原 柚衣《Afterglow #07》"></div>
   <div class="hero-vignette" aria-hidden="true"></div>
   <div class="hero-content">
@@ -68,36 +75,53 @@
       <span class="live-txt">GALLERY DOT 10周年。事前予約で記念マグをプレゼント。</span>
     </div>
     <p class="hero-gallery-name">Gallery Dot — 10th Anniversary — 2026</p>
+    <!-- ジャンルバッジ -->
+    <div class="hero-genres">
+      <span class="hero-genre">📷 写真</span>
+      <span class="hero-genre">◎ 彫刻</span>
+      <span class="hero-genre">⌇ テキスタイル</span>
+      <span class="hero-genre">▦ 版画</span>
+      <span class="hero-genre">◉ サウンド</span>
+    </div>
     <h1 class="hero-ttl">AFTER<br><em>IMAGE</em></h1>
     <p class="hero-sub">
       — 10年の残像。<br>
       1/10–1/26&ensp;｜&ensp;12:00–19:00&ensp;｜&ensp;火休&ensp;｜&ensp;原宿・神宮前
     </p>
-    <div class="hero-btns">
-      <button class="btn-a btn-magnetic" data-scroll-to=".res-section">来場予約する</button>
+    <div class="hero-btns sp-only">
+      <button class="btn-a btn-magnetic" data-scroll-to=".res-section">無料来場予約 — 特典マグもらえる</button>
+      <p class="hero-cta-note">1/10〜1/26 · 原宿 · 入場無料 · 3分で完了</p>
       <button class="btn-b" data-scroll-to=".res-section">
         <div class="line-icon" aria-hidden="true">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.28 5.13 3.3 6.84L4 22l4.5-2.18C9.6 20.26 10.77 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 40 40" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M20 2C10.06 2 2 8.72 2 17c0 4.9 2.78 9.28 7.13 12.18-.31 1.16-1.13 4.22-1.3 4.88-.2.82.3.81.63.59.26-.17 4.15-2.74 5.83-3.85.54.08 1.1.12 1.71.12 9.94 0 18-6.72 18-15S29.94 2 20 2zm-5.5 19.5h-4a1 1 0 01-1-1v-7a1 1 0 012 0v6h3a1 1 0 010 2zm3 0a1 1 0 01-1-1v-7a1 1 0 012 0v7a1 1 0 01-1 1zm9 0h-4a1 1 0 01-1-1v-7a1 1 0 012 0v2.5l2.3-3a1 1 0 011.7 1.06L25.6 16l1.9 2.94a1 1 0 01-1.7 1.06L24 17.5V20h2.5a1 1 0 010 2z"/></svg>
         </div>
         LINEで最新情報を受け取る
       </button>
     </div>
   </div>
+  <!-- PC: stat grid + CTA right column -->
+  <div class="hero-right-col">
+    <div class="hero-stat-grid">
+      <div class="hero-stat"><div class="hero-stat-lbl">会期</div><div class="hero-stat-val">1/10–1/26</div></div>
+      <div class="hero-stat"><div class="hero-stat-lbl">時間</div><div class="hero-stat-val">12:00–19:00</div></div>
+      <div class="hero-stat"><div class="hero-stat-lbl">入場</div><div class="hero-stat-val">無料</div></div>
+      <div class="hero-stat"><div class="hero-stat-lbl">会場</div><div class="hero-stat-val">原宿・神宮前</div></div>
+    </div>
+    <div class="hero-btns" style="opacity:0;animation:fadeRise 0.7s 1.0s var(--ease) forwards">
+      <button class="btn-a btn-magnetic" data-scroll-to=".res-section">無料来場予約 — 特典マグもらえる</button>
+      <p class="hero-cta-note">1/10〜1/26 · 原宿 · 入場無料 · 3分で完了</p>
+      <button class="btn-b" data-scroll-to=".res-section">
+        <div class="line-icon"><svg width="14" height="14" viewBox="0 0 40 40" fill="white"><path d="M20 2C10.06 2 2 8.72 2 17c0 4.9 2.78 9.28 7.13 12.18-.31 1.16-1.13 4.22-1.3 4.88-.2.82.3.81.63.59.26-.17 4.15-2.74 5.83-3.85.54.08 1.1.12 1.71.12 9.94 0 18-6.72 18-15S29.94 2 20 2zm-5.5 19.5h-4a1 1 0 01-1-1v-7a1 1 0 012 0v6h3a1 1 0 010 2zm3 0a1 1 0 01-1-1v-7a1 1 0 012 0v7a1 1 0 01-1 1zm9 0h-4a1 1 0 01-1-1v-7a1 1 0 012 0v2.5l2.3-3a1 1 0 011.7 1.06L25.6 16l1.9 2.94a1 1 0 01-1.7 1.06L24 17.5V20h2.5a1 1 0 010 2z"/></svg></div>
+        LINEで最新情報を受け取る
+      </button>
+    </div>
+  </div>
+
   <div class="scroll-indicator" aria-hidden="true">
     <span>scroll</span><div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- PERSONA TAGS -->
-<div class="persona-strip" aria-hidden="true">
-  <span class="persona-tag">現代アート</span>
-  <span class="persona-tag">写真・映像</span>
-  <span class="persona-tag">デザイン・建築</span>
-  <span class="persona-tag">クリエイティブ職</span>
-  <span class="persona-tag">美大生・若手作家</span>
-  <span class="persona-tag">渋谷・原宿・表参道</span>
-  <span class="persona-tag">25〜44歳</span>
-</div>
 
 <!-- MARQUEE -->
 <div class="marquee-strip" aria-hidden="true">
@@ -119,6 +143,43 @@
   </div>
 </div>
 
+<!-- ARTIST STRIP + STATS -->
+<div class="hero-artists-bar">
+  <!-- アーティスト5名サムネイル -->
+  <div class="artist-thumbs">
+    <div class="artist-thumb">
+      <img src="images/Orihara.png" alt="折原 柚衣">
+      <span>折原 柚衣</span>
+    </div>
+    <div class="artist-thumb">
+      <img src="images/NORI.png" alt="NORI">
+      <span>NORI</span>
+    </div>
+    <div class="artist-thumb">
+      <img src="images/saeki.png" alt="佐伯 凛">
+      <span>佐伯 凛</span>
+    </div>
+    <div class="artist-thumb">
+      <img src="images/Hanna.png" alt="Hanna K.">
+      <span>Hanna K.</span>
+    </div>
+    <div class="artist-thumb">
+      <img src="images/Sakai_Naoto.png" alt="境 直斗">
+      <span>境 直斗</span>
+    </div>
+  </div>
+  <!-- 展示規模の数字 -->
+  <div class="exhibit-stats">
+    <div class="exhibit-stat"><span class="exhibit-stat-num">5</span><span class="exhibit-stat-lbl">Artists</span></div>
+    <div class="exhibit-stat-sep"></div>
+    <div class="exhibit-stat"><span class="exhibit-stat-num">5</span><span class="exhibit-stat-lbl">Events</span></div>
+    <div class="exhibit-stat-sep"></div>
+    <div class="exhibit-stat"><span class="exhibit-stat-num">17</span><span class="exhibit-stat-lbl">Days</span></div>
+    <div class="exhibit-stat-sep"></div>
+    <div class="exhibit-stat"><span class="exhibit-stat-num free">Free</span><span class="exhibit-stat-lbl">入場無料</span></div>
+  </div>
+</div>
+
 <!-- DATES -->
 <div class="dates">
   <div class="d-cell"><div class="d-lbl">会期</div><div class="d-val">1/10–1/26</div></div>
@@ -129,43 +190,92 @@
 </div>
 
 <!-- ════════ GIFT ════════ -->
-<section class="gift" aria-labelledby="gift-h">
-  <div class="gift-glow" aria-hidden="true"></div>
-  <span class="scroll-num" aria-hidden="true">01</span>
-  <div class="s-eyebrow reveal-left">Special Gift</div>
-  <h2 class="s-ttl reveal-clip d-01" id="gift-h">予約で<br><em>もらえる。</em></h2>
-  <p class="s-body reveal d-02">
-    このページから来場予約→当日QRチェックインで、10周年記念マグカップを1名1点プレゼント。各日先着40個・なくなり次第終了。
-  </p>
-  <div class="mug-wrap reveal-scale d-015">
-    <img src="images/Cup.png" alt="GALLERY DOT 10周年記念マグカップ 黒・白2色" class="mug-img" width="390" height="260" loading="lazy">
-    <div class="mug-badge">黒・白 2色展開</div>
-  </div>
-  <div class="mug-cta-wrap reveal d-005">
-    <button class="btn-a btn-magnetic" data-scroll-to=".res-section">今すぐ予約して特典をゲット →</button>
-  </div>
-  <div class="steps stagger-parent">
-    <div class="step stagger-child"><div class="step-num" aria-hidden="true">1</div><div><div class="step-title">このページから予約</div><div class="step-desc">予約完了後にQRコードをお送りします</div></div></div>
-    <div class="step stagger-child"><div class="step-num" aria-hidden="true">2</div><div><div class="step-title">当日 入口でQRスキャン</div><div class="step-desc">チェックインで来場を確認します</div></div></div>
-    <div class="step stagger-child"><div class="step-num" aria-hidden="true">3</div><div><div class="step-title">マグカップを受け取る</div><div class="step-desc">物販コーナーにてお渡し。色選択は先着順</div></div></div>
-  </div>
-  <div class="stock reveal d-03">
-    <div class="stock-hd">
-      <span class="stock-title">日別在庫状況</span>
-      <span class="stock-live"><span class="stock-live-dot" aria-hidden="true"></span>LIVE</span>
+<!-- ════════ GIFT ════════ -->
+<section class="gift-feature" aria-labelledby="gift-h">
+
+  <!-- 左: 写真 / 右: テキスト（PC左右分割） -->
+  <div class="gift-layout">
+
+    <!-- 写真カラム -->
+    <div class="gift-img-col">
+      <div class="gift-img-wrap">
+        <img src="images/Cup.png" alt="GALLERY DOT 10周年記念マグカップ 黒・白2色" class="gift-img" loading="lazy">
+        <div class="gift-img-label">
+          <span class="gift-img-label-eye">Limited</span>
+          <span class="gift-img-label-val">黒・白 2色展開</span>
+        </div>
+      </div>
     </div>
-    <div class="stock-row"><span class="stock-date">1/10（土）開幕日</span><span class="stock-num"><b data-count="28">0</b> / 40</span></div>
-    <div class="track"><div class="fill stock-fill-70"></div></div>
-    <div class="stock-row"><span class="stock-date">1/11（日）</span><span class="stock-num aq"><span data-count="38">0</span> / 40</span></div>
-    <div class="track"><div class="fill aq stock-fill-95"></div></div>
-    <div class="stock-row"><span class="stock-date">1/17（土）</span><span class="stock-num"><b data-count="22">0</b> / 40</span></div>
-    <div class="track"><div class="fill stock-fill-55"></div></div>
-    <p class="stock-note">※ 在庫はリアルタイム連動予定。数値はデモ表示です。</p>
+
+    <!-- テキストカラム -->
+    <div class="gift-text-col">
+      <div class="s-eyebrow reveal-left">Special Gift</div>
+      <h2 class="s-ttl reveal-clip" id="gift-h" style="transition-delay:0.1s">予約で<br><em>もらえる。</em></h2>
+      <p class="s-body reveal" style="transition-delay:0.2s">
+        このページから来場予約し、当日入口でQRをスキャンすると、10周年記念マグカップを1名1点プレゼント。各日先着40個・なくなり次第終了。
+      </p>
+
+      <!-- ステップ -->
+      <div class="gift-steps stagger-parent">
+        <div class="gift-step stagger-child">
+          <span class="gift-step-num">01</span>
+          <div>
+            <div class="gift-step-title">このページから予約</div>
+            <div class="gift-step-desc">完了後にQRコードが届きます</div>
+          </div>
+        </div>
+        <div class="gift-step stagger-child">
+          <span class="gift-step-num">02</span>
+          <div>
+            <div class="gift-step-title">当日 入口でQRスキャン</div>
+            <div class="gift-step-desc">チェックインで来場を確認します</div>
+          </div>
+        </div>
+        <div class="gift-step stagger-child">
+          <span class="gift-step-num">03</span>
+          <div>
+            <div class="gift-step-title">マグカップを受け取る</div>
+            <div class="gift-step-desc">物販コーナーにてお渡し。色選択は先着順</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 在庫 -->
+      <div class="gift-stock reveal" style="transition-delay:0.3s">
+        <div class="stock-hd">
+          <span class="stock-title">日別在庫状況</span>
+          <span class="stock-live"><span class="stock-live-dot" aria-hidden="true"></span>LIVE</span>
+        </div>
+        <div class="stock-row"><span class="stock-date">1/10（土）開幕日</span><span class="stock-num"><b data-count="28">0</b> / 40</span></div>
+        <div class="track"><div class="fill stock-fill-70"></div></div>
+        <div class="stock-row"><span class="stock-date">1/11（日）</span><span class="stock-num aq"><span data-count="38">0</span> / 40</span></div>
+        <div class="track"><div class="fill aq stock-fill-95"></div></div>
+        <div class="stock-row"><span class="stock-date">1/17（土）</span><span class="stock-num"><b data-count="22">0</b> / 40</span></div>
+        <div class="track"><div class="fill stock-fill-55"></div></div>
+        <p class="stock-note">※ 在庫はリアルタイム連動予定。数値はデモ表示です。</p>
+      </div>
+
+      <button class="btn-a reveal" style="transition-delay:0.15s;margin-top:28px" data-scroll-to=".res-section">今すぐ無料予約 — 先着40個</button>
+    </div>
+
   </div>
-  <button class="btn-a btn-magnetic reveal mt-26 d-01" data-scroll-to=".res-section">来場予約する</button>
 </section>
 
-<!-- STICKY 1 -->
+<!-- STICKY 0 — 折原 柚衣 -->
+<div class="sticky-scene">
+  <div class="sticky-inner">
+    <img src="images/Orihara.png" alt="折原 柚衣《Afterglow #07》2025" class="sticky-img" loading="lazy">
+    <div class="sticky-content">
+      <div>
+        <div class="sticky-text-item"><div class="sticky-label">Artist 01 — Optical Print</div></div>
+        <div class="sticky-text-item"><div class="sticky-title">折原 柚衣<br><em>Yui Orihara</em></div></div>
+        <div class="sticky-text-item"><div class="sticky-sub">《Afterglow #07》2025<br>光学プリント</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY 1 —  NORI -->
 <div class="sticky-scene">
   <div class="sticky-inner">
     <img src="images/NORI.png" alt="NORI《Echo Pendulum》2025" class="sticky-img" loading="lazy">
@@ -178,8 +288,10 @@
 </div>
 
 <!-- ════════ CONCEPT ════════ -->
-<section class="concept" aria-labelledby="concept-h">
+<section class="concept" id="concept" aria-labelledby="concept-h">
   <span class="scroll-num" aria-hidden="true">10</span>
+  <div class="concept-inner">
+  <div>
   <div class="s-eyebrow reveal-left">Concept</div>
   <h2 class="s-ttl reveal-clip d-01" id="concept-h">10年の<br><em>残像。</em></h2>
   <blockquote class="blockq word-reveal">
@@ -188,43 +300,101 @@
   <p class="s-body reveal d-035">
     10年で出会った作家たちの新作・未公開作を中心に、記憶と物質が交わる瞬間を展示します。写真、彫刻、テキスタイル、版画、サウンドインスタレーション——5名の表現が、ひとつのテーマのもとに集まります。
   </p>
+  </div><!-- concept right -->
+  </div><!-- concept-inner -->
 </section>
 
 <div class="diag-divider" aria-hidden="true"></div>
 
 <!-- ════════ ARTISTS ════════ -->
-<section class="artists bg-dim" aria-labelledby="artists-h">
-  <div class="artists-hd">
-    <div class="s-eyebrow reveal-left">Artists</div>
-    <h2 class="s-ttl reveal-clip d-01" id="artists-h">参加<br><em>アーティスト</em></h2>
+<section id="artists" aria-labelledby="artists-h">
+
+  <div class="artists-intro container-pad stagger-parent">
+    <div class="stagger-child">
+      <div class="s-eyebrow">Artists</div>
+      <h2 class="s-ttl" id="artists-h">参加<br><em>アーティスト</em></h2>
+    </div>
+    <p class="s-body stagger-child">5名の作家が「残像」というテーマのもとに集まります。</p>
   </div>
-  <div class="artists-grid stagger-parent">
-    <article class="a-card a-card--featured stagger-child">
-      <img src="images/Orihara.png" alt="折原 柚衣《Afterglow #07》2025 光学プリント" class="a-img" loading="lazy">
-      <span class="a-photo-badge">\ud83d\udcf7 撮影可</span>
-      <div class="a-over"><div class="a-type">光学プリント</div><div class="a-name">折原 柚衣</div><div class="a-work">《Afterglow #07》2025</div></div>
-    </article>
-    <article class="a-card stagger-child">
-      <img src="images/NORI.png" alt="NORI《Echo Pendulum》2025 キネティック彫刻" class="a-img" loading="lazy">
-      <span class="a-photo-badge">\ud83d\udcf7 撮影可</span>
-      <div class="a-over"><div class="a-type">キネティック彫刻</div><div class="a-name">NORI（野里 直）</div><div class="a-work">《Echo Pendulum》2025</div></div>
-    </article>
-    <article class="a-card stagger-child">
-      <img src="images/saeki.png" alt="佐伯 凛《weave_ghost 3》2025 デジタル織物" class="a-img" loading="lazy">
-      <span class="a-photo-badge">\ud83d\udcf7 撮影可</span>
-      <div class="a-over"><div class="a-type">デジタル織物</div><div class="a-name">佐伯 凛</div><div class="a-work">《weave_ghost 3》2025</div></div>
-    </article>
-    <article class="a-card stagger-child">
-      <img src="images/Hanna.png" alt="Hanna K.《Residual Bodies》2023 版画" class="a-img" loading="lazy">
-      <span class="a-photo-badge">\ud83d\udcf7 撮影可</span>
-      <div class="a-over"><div class="a-type">版画 / モノタイプ</div><div class="a-name">Hanna K.</div><div class="a-work">《Residual Bodies》2023</div></div>
-    </article>
-    <article class="a-card stagger-child">
-      <img src="images/Sakai_Naoto.png" alt="境 直斗《After Silence》2025 サウンドインスタレーション" class="a-img" loading="lazy">
-      <div class="a-over"><div class="a-type">サウンド・インスタレーション</div><div class="a-name">境 直斗</div><div class="a-work">《After Silence》2025</div></div>
-    </article>
+
+  <!-- Artist 01 — 折原 柚衣 -->
+  <div class="artist-feature reveal-scale">
+    <div class="af-img-wrap">
+      <img src="images/Orihara.png" alt="折原 柚衣《Afterglow #07》2025" class="af-img" loading="lazy">
+      <span class="af-num">01</span>
+    </div>
+    <div class="af-info">
+      <div class="af-type">光学プリント — Optical Print</div>
+      <h3 class="af-name">折原 柚衣</h3>
+      <p class="af-work">
+        《Afterglow #07》, 2025, ラムダプリント＋UVレジン, 100×140cm<br>
+        <span class="af-work-sub">《Blind Spot》, 2024, ピグメントプリント, 80×120cm（個人蔵・東京）</span>
+      </p>
+      <p class="af-desc">光の残滓を捉えた長時間露光シリーズ。人の動きと光の軌跡が交差する地点で生まれるイメージを探求する。</p>
+      <p class="af-credit">© Yui Orihara / Courtesy of GALLERY DOT</p>
+      <span class="af-badge">📷 撮影可</span>
+    </div>
   </div>
-  <a href="#" class="inline-cta-link" data-scroll-to=".res-section">イベント参加も予約から →</a>
+
+  <!-- Artist 02 — 野里 直（NORI） -->
+  <div class="artist-feature artist-feature--rev reveal-scale">
+    <div class="af-img-wrap">
+      <img src="images/NORI.png" alt="NORI（野里 直）《Echo Pendulum》2025" class="af-img" loading="lazy">
+      <span class="af-num">02</span>
+    </div>
+    <div class="af-info">
+      <div class="af-type">キネティック彫刻 — Kinetic Sculpture</div>
+      <h3 class="af-name">NORI<em>（野里 直）</em></h3>
+      <p class="af-work">《Echo Pendulum》2025</p>
+      <p class="af-desc">磁力と重力が拮抗するステンレス製の振り子。静止した瞬間と連続する運動のあいだに「残像」を宿す。</p>
+      <span class="af-badge">📷 撮影可</span>
+    </div>
+  </div>
+
+  <!-- Artist 03 — 佐伯 凛 -->
+  <div class="artist-feature reveal-scale">
+    <div class="af-img-wrap">
+      <img src="images/saeki.png" alt="佐伯 凛《weave_ghost 3》2025" class="af-img" loading="lazy">
+      <span class="af-num">03</span>
+    </div>
+    <div class="af-info">
+      <div class="af-type">デジタル織物 — Digital Textile</div>
+      <h3 class="af-name">佐伯 凛</h3>
+      <p class="af-work">《weave_ghost 3》2025<br><small>ジャカード織（シルク / 和紙）180 × 90cm</small></p>
+      <p class="af-desc">デジタルデータをジャカード織機で物質化する。デジタルとアナログのはざまに残る「ノイズ」を布として顕在化する試み。</p>
+      <span class="af-badge">📷 撮影可</span>
+    </div>
+  </div>
+
+  <!-- Artist 04 — Hanna K. -->
+  <div class="artist-feature artist-feature--rev reveal-scale">
+    <div class="af-img-wrap">
+      <img src="images/Hanna.png" alt="Hanna K.《Residual Bodies》2023" class="af-img" loading="lazy">
+      <span class="af-num">04</span>
+    </div>
+    <div class="af-info">
+      <div class="af-type">版画 / モノタイプ — Printmaking</div>
+      <h3 class="af-name">Hanna K.</h3>
+      <p class="af-work">《Residual Bodies》2023</p>
+      <p class="af-desc">一度きりの刷りに刻まれる身体の痕跡。圧力と顔料が残すかたちの不可逆性を通じて、記憶の物質性を問う。</p>
+      <span class="af-badge">📷 撮影可</span>
+    </div>
+  </div>
+
+  <!-- Artist 05 — 境 直斗 -->
+  <div class="artist-feature reveal-scale">
+    <div class="af-img-wrap">
+      <img src="images/Sakai_Naoto.png" alt="境 直斗《After Silence》2025" class="af-img" loading="lazy">
+      <span class="af-num">05</span>
+    </div>
+    <div class="af-info">
+      <div class="af-type">サウンド・インスタレーション — Sound Installation</div>
+      <h3 class="af-name">境 直斗</h3>
+      <p class="af-work">《After Silence》2025</p>
+      <p class="af-desc">音が止んだあとに耳が捉える残響。無響室とギャラリー空間の差異を使い、「聴覚的な残像」を体験させる没入型インスタレーション。</p>
+    </div>
+  </div>
+
 </section>
 
 <!-- STICKY 2 -->
@@ -240,16 +410,22 @@
 </div>
 
 <!-- ════════ SCHEDULE + EVENT RESERVE ════════ -->
-<section class="sched" aria-labelledby="sched-h">
+<section class="sched" id="schedule" aria-labelledby="sched-h">
+  <div class="sched-header-row">
+  <div>
   <div class="s-eyebrow reveal-left">Schedule</div>
   <h2 class="s-ttl reveal-clip d-01" id="sched-h">トーク &amp;<br><em>パフォーマンス</em></h2>
+  </div>
+  <a href="#" class="sched-inline-cta pc-only" data-scroll-to=".res-section">イベント参加も予約から →</a>
+  </div>
   <p class="s-body reveal d-02" style="margin-bottom:32px">各イベントは定員制・事前予約推奨です。下のボタンから専用フォームへ。</p>
 
+  <div class="evt-list-grid">
   <div class="stagger-parent">
 
     <!-- Talk 1 -->
     <div class="evt stagger-child">
-      <div class="evt-date"><span class="evt-m">Jan</span><span class="evt-d">11</span><span class="evt-w">日</span></div>
+      <div class="evt-date"><span class="evt-date-pill">1/11 日</span></div>
       <div class="evt-content">
         <span class="evt-badge talk">Talk Event</span>
         <div class="evt-ttl">AFTER IMAGE と、10年のキュレーション</div>
@@ -266,7 +442,7 @@
 
     <!-- Talk 2 -->
     <div class="evt stagger-child">
-      <div class="evt-date"><span class="evt-m">Jan</span><span class="evt-d">17</span><span class="evt-w">土</span></div>
+      <div class="evt-date"><span class="evt-date-pill">1/17 土</span></div>
       <div class="evt-content">
         <span class="evt-badge talk">Talk Event</span>
         <div class="evt-ttl">記憶・物質・イメージの残り方</div>
@@ -283,7 +459,7 @@
 
     <!-- Live 1 -->
     <div class="evt stagger-child">
-      <div class="evt-date"><span class="evt-m">Jan</span><span class="evt-d">18</span><span class="evt-w">日</span></div>
+      <div class="evt-date"><span class="evt-date-pill">1/18 日</span></div>
       <div class="evt-content">
         <span class="evt-badge perf">Live Performance</span>
         <div class="evt-ttl">AFTER IMAGE / Light Trace</div>
@@ -299,7 +475,7 @@
 
     <!-- Talk 3 -->
     <div class="evt stagger-child">
-      <div class="evt-date"><span class="evt-m">Jan</span><span class="evt-d">24</span><span class="evt-w">土</span></div>
+      <div class="evt-date"><span class="evt-date-pill">1/24 土</span></div>
       <div class="evt-content">
         <span class="evt-badge talk">Talk Event</span>
         <div class="evt-ttl">若手作家が語る "AFTER IMAGE"</div>
@@ -316,7 +492,7 @@
 
     <!-- Live 2 -->
     <div class="evt stagger-child">
-      <div class="evt-date"><span class="evt-m">Jan</span><span class="evt-d">25</span><span class="evt-w">日</span></div>
+      <div class="evt-date"><span class="evt-date-pill">1/25 日</span></div>
       <div class="evt-content">
         <span class="evt-badge perf">Live Performance</span>
         <div class="evt-ttl">Archive Body</div>
@@ -330,125 +506,127 @@
       </div>
     </div>
 
-  </div>
+  </div><!-- stagger-parent -->
+  </div><!-- evt-list-grid -->
 </section>
 
 <div class="divider"></div>
 
 <!-- ════════ RESERVATION FORMS（Formrun）════════ -->
 <section class="res-section" id="reservation" aria-labelledby="res-h">
-  <div class="s-eyebrow reveal-left">Reservation</div>
-  <h2 class="s-ttl reveal-clip d-01" id="res-h">来場予約 &amp;<br><em>イベント申込</em></h2>
-  <p class="s-body reveal d-02">タブを選んで予約フォームへ。Formrunで管理しています。</p>
 
-  <!-- TABS -->
-  <div class="res-tabs" role="tablist" aria-label="予約フォームの選択">
-    <button class="res-tab active" role="tab" data-tab="visit"  aria-selected="true"  aria-controls="panel-visit" >来場予約</button>
-    <button class="res-tab"        role="tab" data-tab="talk1"  aria-selected="false" aria-controls="panel-talk1" >トーク①</button>
-    <button class="res-tab"        role="tab" data-tab="talk2"  aria-selected="false" aria-controls="panel-talk2" >トーク②</button>
-    <button class="res-tab"        role="tab" data-tab="live1"  aria-selected="false" aria-controls="panel-live1" >ライブ①</button>
-    <button class="res-tab"        role="tab" data-tab="talk3"  aria-selected="false" aria-controls="panel-talk3" >トーク③</button>
-  </div>
+  <div class="res-inner">
+    <div class="s-eyebrow reveal-left">Reservation</div>
+    <h2 class="s-ttl reveal-clip" id="res-h" style="transition-delay:0.1s">来場・イベント<br><em>予約フォーム</em></h2>
+    <p class="s-body reveal" style="transition-delay:0.2s;margin-bottom:36px">
+      来場予約とイベント参加を<strong>1つのフォーム</strong>で受け付けています。<br>
+      来場日を選ぶと、その日にイベントがある場合は参加オプションが自動で表示されます。
+    </p>
 
-  <!-- PANEL: 来場予約 -->
-  <div class="res-pane  <!-- ══ PANEL: 来場予約 ══ -->
-  <div class="res-panel active" id="panel-visit" role="tabpanel">
-    <div id="form-visit">
+    <!-- ═══ 統合フォーム ═══ -->
+    <div id="form-unified">
       <form class="gd-form" novalidate>
+
+        <!-- 基本情報 -->
         <div class="gd-form-header">
           <div class="gd-form-event-name">来場予約フォーム</div>
           <div class="gd-form-event-meta">
             <span>2026年1月10日〜26日</span>
             <span>12:00–19:00</span>
-            <span>火曜休廊</span>
+            <span>火曜休廊 · 入場無料</span>
           </div>
         </div>
 
         <div class="gd-field">
-          <label class="gd-label" for="v-name">氏名 <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="text" id="v-name" name="name" placeholder="例：山田 太郎" autocomplete="name">
+          <label class="gd-label" for="u-name">氏名 <span class="gd-required">必須</span></label>
+          <input class="gd-input" type="text" id="u-name" name="name" placeholder="例：山田 太郎" autocomplete="name">
           <span class="gd-error-msg">氏名を入力してください</span>
         </div>
 
         <div class="gd-field">
-          <label class="gd-label" for="v-email">メールアドレス <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="email" id="v-email" name="email" placeholder="例：taro@example.com" autocomplete="email">
+          <label class="gd-label" for="u-email">メールアドレス <span class="gd-required">必須</span></label>
+          <input class="gd-input" type="email" id="u-email" name="email" placeholder="例：taro@example.com" autocomplete="email">
           <span class="gd-error-msg">正しいメールアドレスを入力してください</span>
         </div>
 
         <div class="gd-field">
-          <label class="gd-label" for="v-phone">電話番号 <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="tel" id="v-phone" name="phone" placeholder="例：090-1234-5678" autocomplete="tel">
-          <span class="gd-error-msg">電話番号を正しく入力してください</span>
+          <label class="gd-label" for="u-phone">電話番号 <span class="gd-required">必須</span></label>
+          <input class="gd-input" type="tel" id="u-phone" name="phone" placeholder="例：090-1234-5678" autocomplete="tel">
+          <span class="gd-error-msg">電話番号を入力してください</span>
         </div>
 
+        <div class="gd-divider"></div>
+
+        <!-- 来場日 -->
         <div class="gd-field">
           <div class="gd-label">来場日を選択 <span class="gd-required">必須</span></div>
         </div>
-        <div class="gd-date-grid"></div>
+        <div class="gd-date-grid" id="u-date-grid"></div>
 
-        <div class="gd-field gd-time-slot-wrap" style="display:none">
+        <!-- 時間帯（日付選択後に表示） -->
+        <div class="gd-field gd-time-slot-wrap" id="u-time-wrap" style="display:none">
           <div class="gd-label">時間帯を選択（30分枠）<span class="gd-required">必須</span></div>
-          <div class="gd-time-slots"></div>
+          <div class="gd-time-slots" id="u-time-slots"></div>
         </div>
 
+        <!-- ★ イベント参加（日付に連動して自動表示） -->
+        <div id="u-event-wrap" style="display:none">
+          <div class="gd-divider"></div>
+          <div class="gd-field">
+            <div class="gd-label event-label-highlight">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              この日はイベントがあります
+              <span class="gd-optional">参加する場合はチェック</span>
+            </div>
+            <div class="gd-check-group" id="u-event-checks"></div>
+          </div>
+          <!-- イベント質問欄（チェック後に表示） -->
+          <div id="u-event-note-wrap" style="display:none">
+            <div class="gd-field">
+              <label class="gd-label" for="u-note">登壇者への事前質問 <span class="gd-optional">任意</span></label>
+              <textarea class="gd-textarea" id="u-note" name="note" placeholder="質問があればご記入ください（当日Q&amp;Aで取り上げる可能性があります）"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="gd-divider"></div>
+
+        <!-- 同伴人数 -->
         <div class="gd-field">
-          <label class="gd-label">同伴人数 <span class="gd-optional">任意・最大2名</span></label>
+          <label class="gd-label">同伴人数 <span class="gd-optional">任意・高校生以上・最大2名</span></label>
           <div class="gd-counter">
             <button type="button" class="gd-counter-btn" data-action="minus">−</button>
             <div class="gd-counter-val">0</div>
             <button type="button" class="gd-counter-btn" data-action="plus">+</button>
           </div>
+          <p class="companion-note">※ 中学生以下のお子様は保護者同伴に限り入場可（人数カウント外）</p>
         </div>
 
         <div class="gd-divider"></div>
 
-        <div class="gd-field">
-          <div class="gd-label">トークイベント参加 <span class="gd-optional">任意・複数可</span></div>
-          <div class="gd-check-group">
-            <label class="gd-check-item">
-              <input type="checkbox" name="talk" value="talk1">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">1/11（日）トーク①「AFTER IMAGE と、10年のキュレーション」<small>17:00–18:15 ／ 定員40名</small></span>
-            </label>
-            <label class="gd-check-item">
-              <input type="checkbox" name="talk" value="talk2">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">1/17（土）トーク②「記憶・物質・イメージの残り方」<small>18:00–19:00 ／ 定員35名</small></span>
-            </label>
-            <label class="gd-check-item">
-              <input type="checkbox" name="talk" value="live1">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">1/18（日）ライブ①「AFTER IMAGE / Light Trace」<small>18:30–19:10 ／ 定員30名</small></span>
-            </label>
-            <label class="gd-check-item">
-              <input type="checkbox" name="talk" value="talk3">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">1/24（土）トーク③「若手作家が語る "AFTER IMAGE"」<small>16:00–17:00 ／ 定員50名</small></span>
-            </label>
-          </div>
-        </div>
-
-        <div class="gd-divider"></div>
-
+        <!-- LINE -->
         <div class="gd-field">
           <div class="gd-label">LINE公式アカウント <span class="gd-optional">任意</span></div>
           <div class="gd-check-group">
             <label class="gd-check-item">
               <input type="checkbox" name="line_consent" value="1">
               <span class="gd-check-box"></span>
-              <span class="gd-check-label">GALLERY DOTのLINEアカウントを友だち追加して、在庫速報・最新情報を受け取る</span>
+              <span class="gd-check-label">GALLERY DOTのLINEを友だち追加して在庫速報を受け取る</span>
             </label>
           </div>
         </div>
 
+        <!-- 規約同意 -->
         <div class="gd-field">
           <div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div>
           <div class="gd-check-group">
             <label class="gd-check-item">
               <input type="checkbox" name="consent" value="1">
               <span class="gd-check-box"></span>
-              <span class="gd-check-label">個人情報の取り扱いに同意します<small>予約管理・来場チェックイン・特典引換・お知らせ目的のみ使用。会期終了後90日で削除。</small></span>
+              <span class="gd-check-label">
+                個人情報の取り扱いに同意します
+                <small>予約管理・来場チェックイン・特典引換目的のみ使用。会期終了後90日で削除。<br><a href="privacy.pdf" target="_blank" rel="noopener" class="privacy-pdf-link">個人情報保護方針（全文PDF）→</a></small>
+              </span>
             </label>
           </div>
         </div>
@@ -456,341 +634,74 @@
         <div class="gd-validation-summary"></div>
 
         <div class="gd-submit-wrap">
-          <button type="submit" class="gd-submit">来場予約する — 無料・3分</button>
+          <button type="submit" class="gd-submit">来場予約する — 無料</button>
         </div>
-        <p class="gd-privacy-note">予約完了後、予約番号とQRコードをメールでお送りします。</p>
+        <p class="gd-privacy-note">予約完了後、予約番号をメールでお送りします。</p>
+
       </form>
+
+      <!-- 完了画面 -->
       <div class="gd-success">
-        <div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div class="gd-success-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
         <div class="gd-success-ttl">予約が完了しました</div>
-        <p class="gd-success-sub">ご登録のメールアドレスに<br>予約番号とQRコードをお送りしました。</p>
-        <div class="gd-success-id"></div>
-        <p class="gd-success-sub" style="margin-top:8px">当日は入口でQRをご提示ください。</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ PANEL: トーク① ══ -->
-  <div class="res-panel" id="panel-talk1" role="tabpanel">
-    <div id="form-talk1">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header">
-          <div class="gd-form-event-name">「AFTER IMAGE と、10年のキュレーション」</div>
-          <div class="gd-form-event-meta">
-            <span>1月11日（日）</span><span>17:00–18:15</span><span>定員40名</span>
-          </div>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t1-name">氏名 <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="text" id="t1-name" name="name" placeholder="例：山田 太郎" autocomplete="name">
-          <span class="gd-error-msg">氏名を入力してください</span>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t1-email">メールアドレス <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="email" id="t1-email" name="email" placeholder="例：taro@example.com" autocomplete="email">
-          <span class="gd-error-msg">正しいメールアドレスを入力してください</span>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t1-note">質問・コメント <span class="gd-optional">任意</span></label>
-          <textarea class="gd-textarea" id="t1-note" name="note" placeholder="登壇者への質問や聞きたいことがあればご記入ください"></textarea>
-        </div>
-        <div class="gd-field">
-          <div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div>
-          <div class="gd-check-group">
-            <label class="gd-check-item">
-              <input type="checkbox" name="consent" value="1">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">個人情報の取り扱いに同意します</span>
-            </label>
-          </div>
-        </div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap">
-          <button type="submit" class="gd-submit">トーク①を申し込む</button>
-        </div>
-        <p class="gd-privacy-note">定員40名。着席優先、立ち見の可能性あり。</p>
-      </form>
-      <div class="gd-success">
-        <div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div class="gd-success-ttl">申込が完了しました</div>
-        <p class="gd-success-sub">メールにて受付番号をお送りします。</p>
+        <p class="gd-success-sub">ご登録のメールアドレスに予約番号をお送りしました。<br>当日は入口でご提示ください。</p>
         <div class="gd-success-id"></div>
       </div>
     </div>
+
   </div>
-
-  <!-- ══ PANEL: トーク② ══ -->
-  <div class="res-panel" id="panel-talk2" role="tabpanel">
-    <div id="form-talk2">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header">
-          <div class="gd-form-event-name">「記憶・物質・イメージの残り方」</div>
-          <div class="gd-form-event-meta">
-            <span>1月17日（土）</span><span>18:00–19:00</span><span>定員35名</span>
-          </div>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t2-name">氏名 <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="text" id="t2-name" name="name" placeholder="例：山田 太郎" autocomplete="name">
-          <span class="gd-error-msg">氏名を入力してください</span>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t2-email">メールアドレス <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="email" id="t2-email" name="email" placeholder="例：taro@example.com" autocomplete="email">
-          <span class="gd-error-msg">正しいメールアドレスを入力してください</span>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t2-note">質問・コメント <span class="gd-optional">任意</span></label>
-          <textarea class="gd-textarea" id="t2-note" name="note" placeholder="聞きたいこと、関心のある素材や表現手法などがあればご記入ください"></textarea>
-        </div>
-        <div class="gd-field">
-          <div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div>
-          <div class="gd-check-group">
-            <label class="gd-check-item">
-              <input type="checkbox" name="consent" value="1">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">個人情報の取り扱いに同意します</span>
-            </label>
-          </div>
-        </div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap">
-          <button type="submit" class="gd-submit">トーク②を申し込む</button>
-        </div>
-        <p class="gd-privacy-note">展示来場予約者優先。空席がある場合のみ当日受付あり。</p>
-      </form>
-      <div class="gd-success">
-        <div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div class="gd-success-ttl">申込が完了しました</div>
-        <p class="gd-success-sub">メールにて受付番号をお送りします。</p>
-        <div class="gd-success-id"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ PANEL: ライブ① ══ -->
-  <div class="res-panel" id="panel-live1" role="tabpanel">
-    <div id="form-live1">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header">
-          <div class="gd-form-event-name">「AFTER IMAGE / Light Trace」</div>
-          <div class="gd-form-event-meta">
-            <span>1月18日（日）</span><span>18:30–19:10</span><span>定員30名</span>
-          </div>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="l1-name">氏名 <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="text" id="l1-name" name="name" placeholder="例：山田 太郎" autocomplete="name">
-          <span class="gd-error-msg">氏名を入力してください</span>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="l1-email">メールアドレス <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="email" id="l1-email" name="email" placeholder="例：taro@example.com" autocomplete="email">
-          <span class="gd-error-msg">正しいメールアドレスを入力してください</span>
-        </div>
-        <div class="gd-field">
-          <div class="gd-label">お子様連れ <span class="gd-optional">任意</span></div>
-          <div class="gd-check-group">
-            <label class="gd-check-item">
-              <input type="checkbox" name="with_child" value="1">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">未就学児を連れて参加（保護者同伴必須）</span>
-            </label>
-          </div>
-        </div>
-        <div class="gd-field">
-          <div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div>
-          <div class="gd-check-group">
-            <label class="gd-check-item">
-              <input type="checkbox" name="consent" value="1">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">個人情報の取り扱いに同意します</span>
-            </label>
-          </div>
-        </div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap">
-          <button type="submit" class="gd-submit">ライブパフォーマンス①を申し込む</button>
-        </div>
-        <p class="gd-privacy-note">定員30名。安全管理のため時間帯別入場制。撮影不可。</p>
-      </form>
-      <div class="gd-success">
-        <div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div class="gd-success-ttl">申込が完了しました</div>
-        <p class="gd-success-sub">メールにて受付番号をお送りします。</p>
-        <div class="gd-success-id"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ PANEL: トーク③ ══ -->
-  <div class="res-panel" id="panel-talk3" role="tabpanel">
-    <div id="form-talk3">
-      <form class="gd-form" novalidate>
-        <div class="gd-form-header">
-          <div class="gd-form-event-name">「若手作家が語る "AFTER IMAGE"」</div>
-          <div class="gd-form-event-meta">
-            <span>1月24日（土）</span><span>16:00–17:00</span><span>定員50名</span>
-          </div>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t3-name">氏名 <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="text" id="t3-name" name="name" placeholder="例：山田 太郎" autocomplete="name">
-          <span class="gd-error-msg">氏名を入力してください</span>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t3-email">メールアドレス <span class="gd-required">必須</span></label>
-          <input class="gd-input" type="email" id="t3-email" name="email" placeholder="例：taro@example.com" autocomplete="email">
-          <span class="gd-error-msg">正しいメールアドレスを入力してください</span>
-        </div>
-        <div class="gd-field">
-          <label class="gd-label" for="t3-note">Q&amp;Aへの事前質問 <span class="gd-optional">任意</span></label>
-          <textarea class="gd-textarea" id="t3-note" name="note" placeholder="作家への質問があれば事前にお送りください（当日Q&Aで取り上げる可能性があります）"></textarea>
-        </div>
-        <div class="gd-field">
-          <div class="gd-label">個人情報・規約 <span class="gd-required">必須</span></div>
-          <div class="gd-check-group">
-            <label class="gd-check-item">
-              <input type="checkbox" name="consent" value="1">
-              <span class="gd-check-box"></span>
-              <span class="gd-check-label">個人情報の取り扱いに同意します</span>
-            </label>
-          </div>
-        </div>
-        <div class="gd-validation-summary"></div>
-        <div class="gd-submit-wrap">
-          <button type="submit" class="gd-submit">トーク③を申し込む</button>
-        </div>
-        <p class="gd-privacy-note">予約推奨（当日参加可）。混雑時は予約者優先。</p>
-      </form>
-      <div class="gd-success">
-        <div class="gd-success-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <div class="gd-success-ttl">申込が完了しました</div>
-        <p class="gd-success-sub">メールにて受付番号をお送りします。</p>
-        <div class="gd-success-id"></div>
-      </div>
-    </div>
-  </div>
-
-</section>
-
-<div class="res-panel" id="panel-talk1" role="tabpanel">
-    <div class="formrun-wrap">
-      <div class="formrun-placeholder">
-        <div class="formrun-placeholder-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="formrun-placeholder-ttl">トークイベント①<br><em style="font-size:14px;font-weight:300">1月11日（日）17:00–18:15</em></div>
-        <p class="formrun-placeholder-sub">
-          「AFTER IMAGE と、10年のキュレーション」<br>
-          定員40名 ／ 要事前予約
-        </p>
-        <div class="formrun-placeholder-url">https://form.run/embed/@gallery-dot-talk1</div>
-        <a href="https://form.run/@gallery-dot-talk1" class="btn-a" target="_blank" rel="noopener" style="max-width:280px;display:block">
-          Formrunで申し込む →
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL: トーク② -->
-  <div class="res-panel" id="panel-talk2" role="tabpanel">
-    <div class="formrun-wrap">
-      <div class="formrun-placeholder">
-        <div class="formrun-placeholder-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="formrun-placeholder-ttl">トークイベント②<br><em style="font-size:14px;font-weight:300">1月17日（土）18:00–19:00</em></div>
-        <p class="formrun-placeholder-sub">
-          「記憶・物質・イメージの残り方」<br>
-          定員35名 ／ 要事前予約
-        </p>
-        <div class="formrun-placeholder-url">https://form.run/embed/@gallery-dot-talk2</div>
-        <a href="https://form.run/@gallery-dot-talk2" class="btn-a" target="_blank" rel="noopener" style="max-width:280px;display:block">
-          Formrunで申し込む →
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL: ライブ① -->
-  <div class="res-panel" id="panel-live1" role="tabpanel">
-    <div class="formrun-wrap">
-      <div class="formrun-placeholder">
-        <div class="formrun-placeholder-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-        </div>
-        <div class="formrun-placeholder-ttl">ライブパフォーマンス①<br><em style="font-size:14px;font-weight:300">1月18日（日）18:30–19:10</em></div>
-        <p class="formrun-placeholder-sub">
-          「AFTER IMAGE / Light Trace」<br>
-          NOA ISHIKAWA × KEN OTOMO<br>
-          定員30名 ／ 要事前予約
-        </p>
-        <div class="formrun-placeholder-url">https://form.run/embed/@gallery-dot-live1</div>
-        <a href="https://form.run/@gallery-dot-live1" class="btn-a" target="_blank" rel="noopener" style="max-width:280px;display:block">
-          Formrunで申し込む →
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- PANEL: トーク③ -->
-  <div class="res-panel" id="panel-talk3" role="tabpanel">
-    <div class="formrun-wrap">
-      <div class="formrun-placeholder">
-        <div class="formrun-placeholder-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="formrun-placeholder-ttl">トークイベント③<br><em style="font-size:14px;font-weight:300">1月24日（土）16:00–17:00</em></div>
-        <p class="formrun-placeholder-sub">
-          「若手作家が語る "AFTER IMAGE"」<br>
-          山城遥 ／ 小林新 ／ Chen Rui<br>
-          定員50名 ／ 予約推奨（当日参加可）
-        </p>
-        <div class="formrun-placeholder-url">https://form.run/embed/@gallery-dot-talk3</div>
-        <a href="https://form.run/@gallery-dot-talk3" class="btn-a" target="_blank" rel="noopener" style="max-width:280px;display:block">
-          Formrunで申し込む →
-        </a>
-      </div>
-    </div>
-  </div>
-
 </section>
 
 <!-- ════════ ACCESS ════════ -->
-<section class="access-section" aria-labelledby="access-h">
-  <img src="images/Gallery_Dot.png" alt="GALLERY DOT 外観・内観" class="access-img reveal-scale" loading="lazy">
-  <div class="access-info">
-    <div class="s-eyebrow reveal-left">Access</div>
-    <h2 class="s-ttl reveal-clip d-01" id="access-h">来場<br><em>方法</em></h2>
-    <div class="ac-grid stagger-parent">
-      <div class="ac-row stagger-child">
-        <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.52 1.5 3.5 3.52 3.5 6c0 3.75 4.5 8.5 4.5 8.5S12.5 9.75 12.5 6c0-2.48-2.02-4.5-4.5-4.5zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"/></svg></div>
-        <div class="ac-txt"><strong>所在地</strong>〒150-0001 東京都渋谷区神宮前 1-2-3 DOT BLDG 1F</div>
-      </div>
-      <div class="ac-row stagger-child">
-        <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-        <div class="ac-txt"><strong>最寄り駅</strong>東京メトロ「明治神宮前〈原宿〉」徒歩3分 ／ JR「原宿」徒歩8分</div>
-      </div>
-      <div class="ac-row stagger-child">
-        <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="4.5" width="11" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 4.5V3a2.5 2.5 0 015 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg></div>
-        <div class="ac-txt"><strong>バリアフリー</strong>スロープ完備 ／ 車椅子での入場可 ／ ベビーカー預かりあり</div>
-      </div>
-      <div class="ac-row stagger-child">
-        <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 2H3a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1zM5 7h6M5 10h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
-        <div class="ac-txt"><strong>お問い合わせ</strong>info@gallery-dot.jp ／ 03-0000-0000</div>
-      </div>
+<section class="access-section" id="access" aria-labelledby="access-h">
+
+  <!-- ギャラリー写真（SP: 全幅 / PC: 左半分） -->
+  <div class="access-layout">
+    <div class="access-photo-col">
+      <img src="images/Gallery_Dot.png" alt="GALLERY DOT 外観・内観" class="access-img" loading="lazy">
     </div>
-    <div class="map-wrap reveal">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.4102!2d139.7027!3d35.6712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca6c4e9cd51%3A0x9c5b2e7c7e5c5c5c!2z5piO5ryJ56ys5qCh5YmN77yI5Y6f5a6_77yJ6aeF!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
-        title="GALLERY DOT の地図 — 東京都渋谷区神宮前1-2-3"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        allowfullscreen>
-      </iframe>
+
+    <div class="access-info" aria-labelledby="access-h">
+      <div class="s-eyebrow reveal-left">Access</div>
+      <h2 class="s-ttl reveal-clip d-01" id="access-h">来場<br><em>方法</em></h2>
+      <div class="ac-grid stagger-parent">
+        <div class="ac-row stagger-child">
+          <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.52 1.5 3.5 3.52 3.5 6c0 3.75 4.5 8.5 4.5 8.5S12.5 9.75 12.5 6c0-2.48-2.02-4.5-4.5-4.5zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z" fill="currentColor"/></svg></div>
+          <div class="ac-txt"><strong>所在地</strong>〒150-0001 東京都渋谷区神宮前 1-2-3 DOT BLDG 1F</div>
+        </div>
+        <div class="ac-row stagger-child">
+          <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div class="ac-txt"><strong>最寄り駅</strong>東京メトロ「明治神宮前〈原宿〉」徒歩3分 ／ JR「原宿」徒歩8分</div>
+        </div>
+        <div class="ac-row stagger-child">
+          <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2.5" y="4.5" width="11" height="8" rx="1" stroke="currentColor" stroke-width="1.2"/><path d="M5.5 4.5V3a2.5 2.5 0 015 0v1.5" stroke="currentColor" stroke-width="1.2"/></svg></div>
+          <div class="ac-txt"><strong>バリアフリー</strong>スロープ完備 ／ 車椅子での入場可 ／ ベビーカー預かりあり</div>
+        </div>
+        <div class="ac-row stagger-child">
+          <div class="ac-ic" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 2H3a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1zM5 7h6M5 10h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+          <div class="ac-txt"><strong>お問い合わせ</strong>info@gallery-dot.jp ／ 03-0000-0000</div>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Google Map（全幅・SP/PC共通） -->
+  <div class="access-map-full reveal">
+    <a class="map-open-link" href="https://maps.google.com/?q=東京都渋谷区神宮前1-2-3" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      マップで開く
+    </a>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.4102!2d139.7027!3d35.6712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca6c4e9cd51%3A0x9c5b2e7c7e5c5c5c!2z5piO5ryJ56ys5qCh5YmN77yI5Y6f5a6_77yJ6aeF!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
+      title="GALLERY DOT の地図 — 東京都渋谷区神宮前1-2-3"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      allowfullscreen>
+    </iframe>
+  </div>
+
 </section>
 
 <div class="divider"></div>
@@ -807,10 +718,11 @@
     <div class="fi"><button class="fq" aria-expanded="false">作品の撮影はできますか？<span class="fq-ico" aria-hidden="true">+</span></button><div class="fa"><p class="fa-inner">静止画のみ可（フラッシュ不可・動画不可）。「撮影不可」表示の作品は全撮影禁止です。ライブパフォーマンス中は一切の撮影不可です。</p></div></div>
     <div class="fi"><button class="fq" aria-expanded="false">子連れでも入場できますか？<span class="fq-ico" aria-hidden="true">+</span></button><div class="fa"><p class="fa-inner">入場可能です。ベビーカーは受付にて預かります（数量限定）。ライブパフォーマンス①は未就学児は保護者同伴が必須です。</p></div></div>
     <div class="fi"><button class="fq" aria-expanded="false">《After Silence》の入場制限について<span class="fq-ico" aria-hidden="true">+</span></button><div class="fa"><p class="fa-inner">ギャラリールームBにて実施。入場10名・15分入替制。撮影不可。当日整理券配布予定。</p></div></div>
+    <div class="fi"><button class="fq" aria-expanded="false">展示内容が変更になることはありますか？<span class="fq-ico" aria-hidden="true">+</span></button><div class="fa"><p class="fa-inner">天候・災害・作品保護上の理由により、展示内容・運営が予告なく変更または中止となる場合があります。あらかじめご了承ください。</p></div></div>
+    <div class="fi"><button class="fq" aria-expanded="false">撮影した写真はSNSに投稿できますか？<span class="fq-ico" aria-hidden="true">+</span></button><div class="fa"><p class="fa-inner">静止画の私的使用・SNS投稿は可能です（フラッシュ不可・動画不可）。商用利用・再配布は禁止です。投稿時は作家名・作品名・© Artist / Courtesy of GALLERY DOT のクレジット記載にご協力ください。</p></div></div>
+    <div class="fi"><button class="fq" aria-expanded="false">マグカップの転売はできますか？<span class="fq-ico" aria-hidden="true">+</span></button><div class="fa"><p class="fa-inner">転売は禁止しています。特典マグカップは予約来場者本人のみへの進呈です。</p></div></div>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- ════════ HISTORY ════════ -->
 <section class="history" aria-labelledby="history-h">
@@ -819,676 +731,37 @@
   <div class="tl stagger-parent">
     <div class="tl-item stagger-child"><div class="tl-yr">2025</div><div class="tl-desc">10周年記念展 "AFTER IMAGE" 開催（本企画）</div></div>
     <div class="tl-item stagger-child"><div class="tl-yr">2024</div><div class="tl-desc">企業コレクション向けキュレーション5件（オフィス常設）</div></div>
-    <div class="tl-item stagger-child"><div class="tl-yr">2023</div><div class="tl-desc">「Edge After Edge」図録が写真協会ブックアワードshortlist</div></div>
-    <div class="tl-item stagger-child"><div class="tl-yr">2022</div><div class="tl-desc">アーティスト・イン・レジデンス（新潟）／ 国内外5名招聘</div></div>
-    <div class="tl-item stagger-child"><div class="tl-yr">2021</div><div class="tl-desc">「Shadow Index」優秀企画賞（都美術館 連携企画）</div></div>
-    <div class="tl-item stagger-child"><div class="tl-yr">2018</div><div class="tl-desc">「New Vision Tokyo」— Tokyo Art Directors Award 入選</div></div>
+    <div class="tl-item stagger-child"><div class="tl-yr">2023</div><div class="tl-desc">写真×彫刻二人展「Edge After Edge」図録 写真協会ブックアワード shortlist</div></div>
+    <div class="tl-item stagger-child"><div class="tl-yr">2022</div><div class="tl-desc">アーティスト・イン・レジデンス（新潟）開始 ／ 国内外5名招聘</div></div>
+    <div class="tl-item stagger-child"><div class="tl-yr">2021</div><div class="tl-desc">キュレーション展「Shadow Index」（都美術館 連携企画）優秀企画賞</div></div>
+    <div class="tl-item stagger-child"><div class="tl-yr">2020</div><div class="tl-desc">オンライン・ビューイング開設（年間来場 2.8万UU）</div></div>
+    <div class="tl-item stagger-child"><div class="tl-yr">2019</div><div class="tl-desc">海外フェア初出展（Art Busan / Discoveries）</div></div>
+    <div class="tl-item stagger-child"><div class="tl-yr">2018</div><div class="tl-desc">「New Vision Tokyo」企画 — Tokyo Art Directors Award 入選</div></div>
+    <div class="tl-item stagger-child"><div class="tl-yr">2017</div><div class="tl-desc">若手作家支援プログラム開始（年間3名）</div></div>
     <div class="tl-item stagger-child"><div class="tl-yr">2016</div><div class="tl-desc">GALLERY DOT 開廊。「Dot Studies #01」シリーズ開始</div></div>
   </div>
 </section>
 
-<!-- STICKY 3 -->
-<div class="sticky-scene">
-  <div class="sticky-inner">
-    <img src="images/Gallery_Dot.png" alt="GALLERY DOT 東京・渋谷区神宮前" class="sticky-img" loading="lazy">
-    <div class="sticky-content">
-      <div class="sticky-text-item"><div class="sticky-label">Gallery — 東京・原宿</div></div>
-      <div class="sticky-text-item"><div class="sticky-title">GALLERY<br><em>DOT</em></div></div>
-      <div class="sticky-text-item"><div class="sticky-sub">〒150-0001 東京都渋谷区神宮前 1-2-3<br>明治神宮前〈原宿〉駅 徒歩3分</div></div>
-    </div>
-  </div>
-</div>
+
 
 <!-- QR -->
-<section class="qr-section reveal" aria-labelledby="qr-h">
-  <div class="s-eyebrow qr-eyebrow">QR Code</div>
-  <h2 class="s-ttl qr-ttl" id="qr-h">友達にシェアする</h2>
-  <img src="images/qr_gallery_dot.png" alt="GALLERY DOT 来場予約ページ QRコード" class="qr-img" width="160" height="160" loading="lazy">
-  <p class="qr-caption">gallery-dot.jp/after-image</p>
-</section>
-
 <!-- FINAL CTA -->
 <section class="fcta" aria-labelledby="cta-h">
   <div class="fcta-glow" aria-hidden="true"></div>
-  <div class="fcta-eye reveal">Reservation Required</div>
-  <h2 class="fcta-ttl reveal-clip d-01" id="cta-h">今すぐ予約して<br><em>特典をゲット</em></h2>
-  <p class="fcta-sub reveal d-02">各日先着40個・なくなり次第終了。<br>予約は無料、3分で完了します。</p>
+  <div class="fcta-eye reveal">無料入場 · 事前予約で特典マグプレゼント</div>
+  <h2 class="fcta-ttl reveal-clip d-01" id="cta-h">来場予約は<br><em>無料・3分。</em></h2>
+  <p class="fcta-sub reveal d-02">各日先着40個のマグカップ、なくなり次第終了。<br>このページからの予約者限定です。</p>
   <div class="fcta-btns reveal d-03">
-    <button class="btn-a btn-magnetic" data-scroll-to=".res-section">来場予約する</button>
+    <button class="btn-a btn-magnetic" data-scroll-to=".res-section">今すぐ来場予約する — 無料</button>
     <button class="btn-b" data-scroll-to=".res-section">
-      <div class="line-icon" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.28 5.13 3.3 6.84L4 22l4.5-2.18C9.6 20.26 10.77 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg></div>
+      <div class="line-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 40 40" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M20 2C10.06 2 2 8.72 2 17c0 4.9 2.78 9.28 7.13 12.18-.31 1.16-1.13 4.22-1.3 4.88-.2.82.3.81.63.59.26-.17 4.15-2.74 5.83-3.85.54.08 1.1.12 1.71.12 9.94 0 18-6.72 18-15S29.94 2 20 2zm-5.5 19.5h-4a1 1 0 01-1-1v-7a1 1 0 012 0v6h3a1 1 0 010 2zm3 0a1 1 0 01-1-1v-7a1 1 0 012 0v7a1 1 0 01-1 1zm9 0h-4a1 1 0 01-1-1v-7a1 1 0 012 0v2.5l2.3-3a1 1 0 011.7 1.06L25.6 16l1.9 2.94a1 1 0 01-1.7 1.06L24 17.5V20h2.5a1 1 0 010 2z"/></svg></div>
       LINEで最新情報を受け取る
     </button>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="ft-logo">Gallery Dot</div>
-  <nav class="ft-links" aria-label="フッターナビ">
-    <a href="https://www.instagram.com/gallery_dot/" class="ft-link" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://lin.ee/xxxxxxx"                 class="ft-link" target="_blank" rel="noopener">LINE</a>
-    <a href="https://x.com/gallery_dot"              class="ft-link" target="_blank" rel="noopener">X</a>
-    <a href="https://gallery-dot.jp"                 class="ft-link" target="_blank" rel="noopener">Website</a>
-  </nav>
-  <div class="ft-sns">
-    <a href="https://www.instagram.com/gallery_dot/" class="sn" aria-label="Instagram" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg></a>
-    <a href="https://lin.ee/xxxxxxx"                 class="sn" aria-label="LINE"      target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.03 2 11c0 2.7 1.28 5.13 3.3 6.84L4 22l4.5-2.18C9.6 20.26 10.77 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z"/></svg></a>
-    <a href="https://x.com/gallery_dot"              class="sn" aria-label="X"         target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-  </div>
-  <address class="ft-copy">
-    〒150-0001 東京都渋谷区神宮前 1-2-3 DOT BLDG 1F<br>
-    info@gallery-dot.jp ／ 03-0000-0000<br><br>
-    © 2026 GALLERY DOT. All rights reserved.
-  </address>
-</footer>
 
 <script src="script.js"></script>
 <script src="reservation.js"></script>
 </body>
-</html>
-",
-      "path": "/mnt/user-data/outputs/gallery_dot_art/index.html"
-    },
-    "message": "Final index.html - updated persona, copy, events, Formrun embeds",
-    "integration_name": null,
-    "integration_icon_url": null,
-    "icon_name": "file",
-    "context": null,
-    "display_content": {
-      "type": "json_block",
-      "json_block": "{"language": "html", "code": "<!DOCTYPE html>\
-<html lang=\"ja\">\
-<head>\
-  <meta charset=\"UTF-8\">\
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\
-\
-  <!-- SEO -->\
-  <title>AFTER IMAGE — 10年の残像。GALLERY DOT 10周年記念展 | 2026年1月10日〜26日 原宿</title>\
-  <meta name=\"description\" content=\"GALLERY DOT 10周年記念展「AFTER IMAGE」。2026年1月10日〜26日、東京・原宿にて開催。現代アート・写真・彫刻・テキスタイルが交わる5名の展示。事前予約で記念マグカップ進呈。入場無料。\">\
-  <meta name=\"robots\" content=\"index, follow\">\
-  <link rel=\"canonical\" href=\"https://gallery-dot.jp/after-image/\">\
-\
-  <!-- OGP -->\
-  <meta property=\"og:type\"         content=\"website\">\
-  <meta property=\"og:title\"        content=\"AFTER IMAGE — 10年の残像。GALLERY DOT 10周年記念展\">\
-  <meta property=\"og:description\"  content=\"光が去ったあとに浮かぶ像のように、創作の時差を見つめる展覧会。2026年1月10日〜26日 原宿・神宮前。入場無料・事前予約でマグカップ進呈。\">\
-  <meta property=\"og:url\"          content=\"https://gallery-dot.jp/after-image/\">\
-  <meta property=\"og:image\"        content=\"https://gallery-dot.jp/after-image/images/ogp.jpg\">\
-  <meta property=\"og:image:width\"  content=\"1200\">\
-  <meta property=\"og:image:height\" content=\"630\">\
-  <meta property=\"og:locale\"       content=\"ja_JP\">\
-  <meta property=\"og:site_name\"    content=\"GALLERY DOT\">\
-\
-  <!-- Twitter Card -->\
-  <meta name=\"twitter:card\"        content=\"summary_large_image\">\
-  <meta name=\"twitter:title\"       content=\"AFTER IMAGE — 10年の残像。GALLERY DOT 10周年記念展\">\
-  <meta name=\"twitter:description\" content=\"光が去ったあとに浮かぶ像のように、創作の時差を見つめる展覧会。2026年1月10日〜26日 原宿・神宮前。入場無料・事前予約でマグカップ進呈。\">\
-  <meta name=\"twitter:image\"       content=\"https://gallery-dot.jp/after-image/images/ogp.jpg\">\
-  <meta name=\"twitter:site\"        content=\"@gallery_dot\">\
-\
-  <!-- Favicon -->\\\\
-\
-  <!-- Web Fonts（非同期読み込み） -->\
-  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\
-  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\
-  <link rel=\"preload\" as=\"style\"\
-        href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap\"\
-        onload=\"this.onload=null;this.rel='stylesheet'\">\
-  <noscript><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Noto+Sans+JP:wght@300;400&display=swap\"></noscript>\
-\
-  <link rel=\"stylesheet\" href=\"style.css\">\
-\
-  <!-- Structured Data -->\
-  <script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"Event\",\"name\":\"AFTER IMAGE — GALLERY DOT 10th Anniversary\",\"description\":\"光が去ったあとに浮かぶ像のように、創作の時差を見つめる展覧会。10年で出会った作家たちの新作・未公開作を中心に、記憶と物質が交わる瞬間を展示します。\",\"startDate\":\"2026-01-10T12:00:00+09:00\",\"endDate\":\"2026-01-26T19:00:00+09:00\",\"eventStatus\":\"https://schema.org/EventScheduled\",\"eventAttendanceMode\":\"https://schema.org/OfflineEventAttendanceMode\",\"isAccessibleForFree\":true,\"location\":{\"@type\":\"Place\",\"name\":\"GALLERY DOT\",\"address\":{\"@type\":\"PostalAddress\",\"streetAddress\":\"神宮前1-2-3 DOT BLDG 1F\",\"addressLocality\":\"渋谷区\",\"addressRegion\":\"東京都\",\"postalCode\":\"150-0001\",\"addressCountry\":\"JP\"}},\"organizer\":{\"@type\":\"Organization\",\"name\":\"GALLERY DOT\",\"url\":\"https://gallery-dot.jp\"}}</script>\
-</head>\
-<body>\
-\
-<div id=\"prog\"><div id=\"prog-fill\"></div></div>\
-\
-<!-- NAV -->\
-<nav>\
-  <div class=\"nav-logo\">\
-    <img src=\"images/gallery_dot_logo.png\" alt=\"GALLERY DOT\" width=\"120\" height=\"20\">\
-  </div>\
-  <button class=\"nav-btn\" data-scroll-to=\".res-section\">来場予約する</button>\
-</nav>\
-\
-<!-- ════════ HERO ════════ -->\
-<section class=\"hero\">\
-  <div class=\"hero-bg\" role=\"img\" aria-label=\"折原 柚衣《Afterglow #07》\"></div>\
-  <div class=\"hero-vignette\" aria-hidden=\"true\"></div>\
-  <div class=\"hero-content\">\
-    <div class=\"hero-badge\">\
-      <span class=\"live-dot\" aria-hidden=\"true\"></span>\
-      <span class=\"live-txt\">GALLERY DOT 10周年。事前予約で記念マグをプレゼント。</span>\
-    </div>\
-    <p class=\"hero-gallery-name\">Gallery Dot — 10th Anniversary — 2026</p>\
-    <h1 class=\"hero-ttl\">AFTER<br><em>IMAGE</em></h1>\
-    <p class=\"hero-sub\">\
-      — 10年の残像。<br>\
-      1/10–1/26&ensp;｜&ensp;12:00–19:00&ensp;｜&ensp;火休&ensp;｜&ensp;原宿・神宮前\
-    </p>\
-    <div class=\"hero-btns\">\
-      <button class=\"btn-a btn-magnetic\" data-scroll-to=\".res-section\">来場予約する</button>\
-      <button class=\"btn-b\" data-scroll-to=\".res-section\">\
-        <div class=\"line-icon\" aria-hidden=\"true\">\
-          <svg width=\"11\" height=\"11\" viewBox=\"0 0 24 24\" fill=\"white\"><path d=\"M12 2C6.48 2 2 6.03 2 11c0 2.7 1.28 5.13 3.3 6.84L4 22l4.5-2.18C9.6 20.26 10.77 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z\"/></svg>\
-        </div>\
-        LINEで最新情報を受け取る\
-      </button>\
-    </div>\
-  </div>\
-  <div class=\"scroll-indicator\" aria-hidden=\"true\">\
-    <span>scroll</span><div class=\"scroll-line\"></div>\
-  </div>\
-</section>\
-\
-<!-- PERSONA TAGS -->\
-<div class=\"persona-strip\" aria-hidden=\"true\">\
-  <span class=\"persona-tag\">現代アート</span>\
-  <span class=\"persona-tag\">写真・映像</span>\
-  <span class=\"persona-tag\">デザイン・建築</span>\
-  <span class=\"persona-tag\">クリエイティブ職</span>\
-  <span class=\"persona-tag\">美大生・若手作家</span>\
-  <span class=\"persona-tag\">渋谷・原宿・表参道</span>\
-  <span class=\"persona-tag\">25〜44歳</span>\
-</div>\
-\
-<!-- MARQUEE -->\
-<div class=\"marquee-strip\" aria-hidden=\"true\">\
-  <div class=\"marquee-inner\">\
-    <span>AFTER IMAGE — 10年の残像。</span><span class=\"dot\">●</span>\
-    <span>GALLERY DOT</span><span class=\"dot\">●</span>\
-    <span>10th Anniversary</span><span class=\"dot\">●</span>\
-    <span>原宿 神宮前</span><span class=\"dot\">●</span>\
-    <span>2026.1.10 — 1.26</span><span class=\"dot\">●</span>\
-    <span>入場無料</span><span class=\"dot\">●</span>\
-    <span>事前予約でマグカップ進呈</span><span class=\"dot\">●</span>\
-    <span>AFTER IMAGE — 10年の残像。</span><span class=\"dot\">●</span>\
-    <span>GALLERY DOT</span><span class=\"dot\">●</span>\
-    <span>10th Anniversary</span><span class=\"dot\">●</span>\
-    <span>原宿 神宮前</span><span class=\"dot\">●</span>\
-    <span>2026.1.10 — 1.26</span><span class=\"dot\">●</span>\
-    <span>入場無料</span><span class=\"dot\">●</span>\
-    <span>事前予約でマグカップ進呈</span><span class=\"dot\">●</span>\
-  </div>\
-</div>\
-\
-<!-- DATES -->\
-<div class=\"dates\">\
-  <div class=\"d-cell\"><div class=\"d-lbl\">会期</div><div class=\"d-val\">1/10–1/26</div></div>\
-  <div class=\"d-sep\" aria-hidden=\"true\"></div>\
-  <div class=\"d-cell\"><div class=\"d-lbl\">時間</div><div class=\"d-val\">12:00–19:00</div></div>\
-  <div class=\"d-sep\" aria-hidden=\"true\"></div>\
-  <div class=\"d-cell\"><div class=\"d-lbl\">入場</div><div class=\"d-val\">無料</div></div>\
-</div>\
-\
-<!-- ════════ GIFT ════════ -->\
-<section class=\"gift\" aria-labelledby=\"gift-h\">\
-  <div class=\"gift-glow\" aria-hidden=\"true\"></div>\
-  <span class=\"scroll-num\" aria-hidden=\"true\">01</span>\
-  <div class=\"s-eyebrow reveal-left\">Special Gift</div>\
-  <h2 class=\"s-ttl reveal-clip d-01\" id=\"gift-h\">予約で<br><em>もらえる。</em></h2>\
-  <p class=\"s-body reveal d-02\">\
-    このページから来場予約→当日QRチェックインで、10周年記念マグカップを1名1点プレゼント。各日先着40個・なくなり次第終了。\
-  </p>\
-  <div class=\"mug-wrap reveal-scale d-015\">\
-    <img src=\"images/Cup.png\" alt=\"GALLERY DOT 10周年記念マグカップ 黒・白2色\" class=\"mug-img\" width=\"390\" height=\"260\" loading=\"lazy\">\
-    <div class=\"mug-badge\">黒・白 2色展開</div>\
-  </div>\
-  <div class=\"mug-cta-wrap reveal d-005\">\
-    <button class=\"btn-a btn-magnetic\" data-scroll-to=\".res-section\">今すぐ予約して特典をゲット →</button>\
-  </div>\
-  <div class=\"steps stagger-parent\">\
-    <div class=\"step stagger-child\"><div class=\"step-num\" aria-hidden=\"true\">1</div><div><div class=\"step-title\">このページから予約</div><div class=\"step-desc\">予約完了後にQRコードをお送りします</div></div></div>\
-    <div class=\"step stagger-child\"><div class=\"step-num\" aria-hidden=\"true\">2</div><div><div class=\"step-title\">当日 入口でQRスキャン</div><div class=\"step-desc\">チェックインで来場を確認します</div></div></div>\
-    <div class=\"step stagger-child\"><div class=\"step-num\" aria-hidden=\"true\">3</div><div><div class=\"step-title\">マグカップを受け取る</div><div class=\"step-desc\">物販コーナーにてお渡し。色選択は先着順</div></div></div>\
-  </div>\
-  <div class=\"stock reveal d-03\">\
-    <div class=\"stock-hd\">\
-      <span class=\"stock-title\">日別在庫状況</span>\
-      <span class=\"stock-live\"><span class=\"stock-live-dot\" aria-hidden=\"true\"></span>LIVE</span>\
-    </div>\
-    <div class=\"stock-row\"><span class=\"stock-date\">1/10（土）開幕日</span><span class=\"stock-num\"><b data-count=\"28\">0</b> / 40</span></div>\
-    <div class=\"track\"><div class=\"fill stock-fill-70\"></div></div>\
-    <div class=\"stock-row\"><span class=\"stock-date\">1/11（日）</span><span class=\"stock-num aq\"><span data-count=\"38\">0</span> / 40</span></div>\
-    <div class=\"track\"><div class=\"fill aq stock-fill-95\"></div></div>\
-    <div class=\"stock-row\"><span class=\"stock-date\">1/17（土）</span><span class=\"stock-num\"><b data-count=\"22\">0</b> / 40</span></div>\
-    <div class=\"track\"><div class=\"fill stock-fill-55\"></div></div>\
-    <p class=\"stock-note\">※ 在庫はリアルタイム連動予定。数値はデモ表示です。</p>\
-  </div>\
-  <button class=\"btn-a btn-magnetic reveal mt-26 d-01\" data-scroll-to=\".res-section\">来場予約する</button>\
-</section>\
-\
-<!-- STICKY 1 -->\
-<div class=\"sticky-scene\">\
-  <div class=\"sticky-inner\">\
-    <img src=\"images/NORI.png\" alt=\"NORI《Echo Pendulum》2025\" class=\"sticky-img\" loading=\"lazy\">\
-    <div class=\"sticky-content\">\
-      <div class=\"sticky-text-item\"><div class=\"sticky-label\">Artist 02 — Kinetic Sculpture</div></div>\
-      <div class=\"sticky-text-item\"><div class=\"sticky-title\">NORI<br><em>野里 直</em></div></div>\
-      <div class=\"sticky-text-item\"><div class=\"sticky-sub\">《Echo Pendulum》2025<br>ステンレス・磁石・モーター</div></div>\
-    </div>\
-  </div>\
-</div>\
-\
-<!-- ════════ CONCEPT ════════ -->\
-<section class=\"concept\" aria-labelledby=\"concept-h\">\
-  <span class=\"scroll-num\" aria-hidden=\"true\">10</span>\
-  <div class=\"s-eyebrow reveal-left\">Concept</div>\
-  <h2 class=\"s-ttl reveal-clip d-01\" id=\"concept-h\">10年の<br><em>残像。</em></h2>\
-  <blockquote class=\"blockq word-reveal\">\
-    光が去ったあとに浮かぶ像のように、創作の時差を見つめる展覧会。\
-  </blockquote>\
-  <p class=\"s-body reveal d-035\">\
-    10年で出会った作家たちの新作・未公開作を中心に、記憶と物質が交わる瞬間を展示します。写真、彫刻、テキスタイル、版画、サウンドインスタレーション——5名の表現が、ひとつのテーマのもとに集まります。\
-  </p>\
-</section>\
-\
-<div class=\"diag-divider\" aria-hidden=\"true\"></div>\
-\
-<!-- ════════ ARTISTS ════════ -->\
-<section class=\"artists bg-dim\" aria-labelledby=\"artists-h\">\
-  <div class=\"artists-hd\">\
-    <div class=\"s-eyebrow reveal-left\">Artists</div>\
-    <h2 class=\"s-ttl reveal-clip d-01\" id=\"artists-h\">参加<br><em>アーティスト</em></h2>\
-  </div>\
-  <div class=\"artists-grid stagger-parent\">\
-    <article class=\"a-card a-card--featured stagger-child\">\
-      <img src=\"images/Orihara.png\" alt=\"折原 柚衣《Afterglow #07》2025 光学プリント\" class=\"a-img\" loading=\"lazy\">\
-      <span class=\"a-photo-badge\">\ud83d\udcf7 撮影可</span>\
-      <div class=\"a-over\"><div class=\"a-type\">光学プリント</div><div class=\"a-name\">折原 柚衣</div><div class=\"a-work\">《Afterglow #07》2025</div></div>\
-    </article>\
-    <article class=\"a-card stagger-child\">\
-      <img src=\"images/NORI.png\" alt=\"NORI《Echo Pendulum》2025 キネティック彫刻\" class=\"a-img\" loading=\"lazy\">\
-      <span class=\"a-photo-badge\">\ud83d\udcf7 撮影可</span>\
-      <div class=\"a-over\"><div class=\"a-type\">キネティック彫刻</div><div class=\"a-name\">NORI（野里 直）</div><div class=\"a-work\">《Echo Pendulum》2025</div></div>\
-    </article>\
-    <article class=\"a-card stagger-child\">\
-      <img src=\"images/saeki.png\" alt=\"佐伯 凛《weave_ghost 3》2025 デジタル織物\" class=\"a-img\" loading=\"lazy\">\
-      <span class=\"a-photo-badge\">\ud83d\udcf7 撮影可</span>\
-      <div class=\"a-over\"><div class=\"a-type\">デジタル織物</div><div class=\"a-name\">佐伯 凛</div><div class=\"a-work\">《weave_ghost 3》2025</div></div>\
-    </article>\
-    <article class=\"a-card stagger-child\">\
-      <img src=\"images/Hanna.png\" alt=\"Hanna K.《Residual Bodies》2023 版画\" class=\"a-img\" loading=\"lazy\">\
-      <span class=\"a-photo-badge\">\ud83d\udcf7 撮影可</span>\
-      <div class=\"a-over\"><div class=\"a-type\">版画 / モノタイプ</div><div class=\"a-name\">Hanna K.</div><div class=\"a-work\">《Residual Bodies》2023</div></div>\
-    </article>\
-    <article class=\"a-card stagger-child\">\
-      <img src=\"images/Sakai_Naoto.png\" alt=\"境 直斗《After Silence》2025 サウンドインスタレーション\" class=\"a-img\" loading=\"lazy\">\
-      <div class=\"a-over\"><div class=\"a-type\">サウンド・インスタレーション</div><div class=\"a-name\">境 直斗</div><div class=\"a-work\">《After Silence》2025</div></div>\
-    </article>\
-  </div>\
-  <a href=\"#\" class=\"inline-cta-link\" data-scroll-to=\".res-section\">イベント参加も予約から →</a>\
-</section>\
-\
-<!-- STICKY 2 -->\
-<div class=\"sticky-scene\">\
-  <div class=\"sticky-inner\">\
-    <img src=\"images/saeki.png\" alt=\"佐伯 凛《weave_ghost 3》2025\" class=\"sticky-img\" loading=\"lazy\">\
-    <div class=\"sticky-content\">\
-      <div class=\"sticky-text-item\"><div class=\"sticky-label\">Artist 03 — Digital Textile</div></div>\
-      <div class=\"sticky-text-item\"><div class=\"sticky-title\">佐伯 凛<br><em>Rin Saeki</em></div></div>\
-      <div class=\"sticky-text-item\"><div class=\"sticky-sub\">《weave_ghost 3》2025<br>ジャカード織（シルク/和紙）180×90cm</div></div>\
-    </div>\
-  </div>\
-</div>\
-\
-<!-- ════════ SCHEDULE + EVENT RESERVE ════════ -->\
-<section class=\"sched\" aria-labelledby=\"sched-h\">\
-  <div class=\"s-eyebrow reveal-left\">Schedule</div>\
-  <h2 class=\"s-ttl reveal-clip d-01\" id=\"sched-h\">トーク &amp;<br><em>パフォーマンス</em></h2>\
-  <p class=\"s-body reveal d-02\" style=\"margin-bottom:32px\">各イベントは定員制・事前予約推奨です。下のボタンから専用フォームへ。</p>\
-\
-  <div class=\"stagger-parent\">\
-\
-    <!-- Talk 1 -->\
-    <div class=\"evt stagger-child\">\
-      <div class=\"evt-date\"><span class=\"evt-m\">Jan</span><span class=\"evt-d\">11</span><span class=\"evt-w\">日</span></div>\
-      <div class=\"evt-content\">\
-        <span class=\"evt-badge talk\">Talk Event</span>\
-        <div class=\"evt-ttl\">AFTER IMAGE と、10年のキュレーション</div>\
-        <div class=\"evt-time\">17:00 – 18:15</div>\
-        <div class=\"evt-speakers\">\
-          <span class=\"evt-speaker\">佐伯奈央 <span class=\"evt-speaker-role\">GALLERY DOT ディレクター / キュレーター</span></span>\
-          <span class=\"evt-speaker\">水野圭太 <span class=\"evt-speaker-role\">参加アーティスト</span></span>\
-          <span class=\"evt-speaker\">久保田ミオ <span class=\"evt-speaker-role\">美術批評 / 編集</span></span>\
-        </div>\
-        <span class=\"evt-cap required\">要予約 ／ 定員40名</span>\
-        <button class=\"evt-reserve-btn\" data-tab=\"talk1\" data-scroll-to=\".res-section\">予約する →</button>\
-      </div>\
-    </div>\
-\
-    <!-- Talk 2 -->\
-    <div class=\"evt stagger-child\">\
-      <div class=\"evt-date\"><span class=\"evt-m\">Jan</span><span class=\"evt-d\">17</span><span class=\"evt-w\">土</span></div>\
-      <div class=\"evt-content\">\
-        <span class=\"evt-badge talk\">Talk Event</span>\
-        <div class=\"evt-ttl\">記憶・物質・イメージの残り方</div>\
-        <div class=\"evt-time\">18:00 – 19:00</div>\
-        <div class=\"evt-speakers\">\
-          <span class=\"evt-speaker\">森本紗英 <span class=\"evt-speaker-role\">参加アーティスト</span></span>\
-          <span class=\"evt-speaker\">高橋凌 <span class=\"evt-speaker-role\">建築家 / 空間ディレクター</span></span>\
-          <span class=\"evt-speaker\">司会：佐伯奈央 <span class=\"evt-speaker-role\">GALLERY DOT</span></span>\
-        </div>\
-        <span class=\"evt-cap required\">要予約 ／ 定員35名</span>\
-        <button class=\"evt-reserve-btn\" data-tab=\"talk2\" data-scroll-to=\".res-section\">予約する →</button>\
-      </div>\
-    </div>\
-\
-    <!-- Live 1 -->\
-    <div class=\"evt stagger-child\">\
-      <div class=\"evt-date\"><span class=\"evt-m\">Jan</span><span class=\"evt-d\">18</span><span class=\"evt-w\">日</span></div>\
-      <div class=\"evt-content\">\
-        <span class=\"evt-badge perf\">Live Performance</span>\
-        <div class=\"evt-ttl\">AFTER IMAGE / Light Trace</div>\
-        <div class=\"evt-time\">18:30 – 19:10</div>\
-        <div class=\"evt-speakers\">\
-          <span class=\"evt-speaker\">NOA ISHIKAWA <span class=\"evt-speaker-role\">光 / 空間パフォーマンス</span></span>\
-          <span class=\"evt-speaker\">KEN OTOMO <span class=\"evt-speaker-role\">サウンド</span></span>\
-        </div>\
-        <span class=\"evt-cap required\">要予約 ／ 定員30名</span>\
-        <button class=\"evt-reserve-btn\" data-tab=\"live1\" data-scroll-to=\".res-section\">予約する →</button>\
-      </div>\
-    </div>\
-\
-    <!-- Talk 3 -->\
-    <div class=\"evt stagger-child\">\
-      <div class=\"evt-date\"><span class=\"evt-m\">Jan</span><span class=\"evt-d\">24</span><span class=\"evt-w\">土</span></div>\
-      <div class=\"evt-content\">\
-        <span class=\"evt-badge talk\">Talk Event</span>\
-        <div class=\"evt-ttl\">若手作家が語る \"AFTER IMAGE\"</div>\
-        <div class=\"evt-time\">16:00 – 17:00</div>\
-        <div class=\"evt-speakers\">\
-          <span class=\"evt-speaker\">山城遥 <span class=\"evt-speaker-role\">参加アーティスト</span></span>\
-          <span class=\"evt-speaker\">小林新 <span class=\"evt-speaker-role\">参加アーティスト</span></span>\
-          <span class=\"evt-speaker\">Chen Rui <span class=\"evt-speaker-role\">参加アーティスト</span></span>\
-        </div>\
-        <span class=\"evt-cap\">予約推奨 ／ 定員50名</span>\
-        <button class=\"evt-reserve-btn\" data-tab=\"talk3\" data-scroll-to=\".res-section\">予約する →</button>\
-      </div>\
-    </div>\
-\
-    <!-- Live 2 -->\
-    <div class=\"evt stagger-child\">\
-      <div class=\"evt-date\"><span class=\"evt-m\">Jan</span><span class=\"evt-d\">25</span><span class=\"evt-w\">日</span></div>\
-      <div class=\"evt-content\">\
-        <span class=\"evt-badge perf\">Live Performance</span>\
-        <div class=\"evt-ttl\">Archive Body</div>\
-        <div class=\"evt-time\">17:30 – 18:00</div>\
-        <div class=\"evt-speakers\">\
-          <span class=\"evt-speaker\">牧村澪 <span class=\"evt-speaker-role\">パフォーマー / 振付</span></span>\
-          <span class=\"evt-speaker\">映像参加：井上湊</span>\
-        </div>\
-        <span class=\"evt-cap\">予約不要 ／ 当日観覧可</span>\
-        <button class=\"evt-reserve-btn free\" disabled>当日観覧可</button>\
-      </div>\
-    </div>\
-\
-  </div>\
-</section>\
-\
-<div class=\"divider\"></div>\
-\
-<!-- ════════ RESERVATION FORMS（Formrun）════════ -->\
-<section class=\"res-section\" id=\"reservation\" aria-labelledby=\"res-h\">\
-  <div class=\"s-eyebrow reveal-left\">Reservation</div>\
-  <h2 class=\"s-ttl reveal-clip d-01\" id=\"res-h\">来場予約 &amp;<br><em>イベント申込</em></h2>\
-  <p class=\"s-body reveal d-02\">タブを選んで予約フォームへ。Formrunで管理しています。</p>\
-\
-  <!-- TABS -->\
-  <div class=\"res-tabs\" role=\"tablist\" aria-label=\"予約フォームの選択\">\
-    <button class=\"res-tab active\" role=\"tab\" data-tab=\"visit\"  aria-selected=\"true\"  aria-controls=\"panel-visit\" >来場予約</button>\
-    <button class=\"res-tab\"        role=\"tab\" data-tab=\"talk1\"  aria-selected=\"false\" aria-controls=\"panel-talk1\" >トーク①</button>\
-    <button class=\"res-tab\"        role=\"tab\" data-tab=\"talk2\"  aria-selected=\"false\" aria-controls=\"panel-talk2\" >トーク②</button>\
-    <button class=\"res-tab\"        role=\"tab\" data-tab=\"live1\"  aria-selected=\"false\" aria-controls=\"panel-live1\" >ライブ①</button>\
-    <button class=\"res-tab\"        role=\"tab\" data-tab=\"talk3\"  aria-selected=\"false\" aria-controls=\"panel-talk3\" >トーク③</button>\
-  </div>\
-\
-  <!-- PANEL: 来場予約 -->\
-  <div class=\"res-panel active\" id=\"panel-visit\" role=\"tabpanel\">\
-    <div class=\"formrun-wrap\">\
-      <!--\
-        ▼ Formrun 来場予約フォームの埋め込みはここに設置\
-        フォーム項目：氏名／メール／電話／来場日・時間帯（30分枠）／同伴人数（0–2）／\
-                      トークイベント参加希望（チェックボックス）／LINE同意（任意）／\
-                      個人情報・規約同意（必須）\
-        例: <iframe src=\"https://form.run/embed/@gallery-dot-visit\" ...></iframe>\
-      -->\
-      <div class=\"formrun-placeholder\">\
-        <div class=\"formrun-placeholder-icon\">\
-          <svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2\"/></svg>\
-        </div>\
-        <div class=\"formrun-placeholder-ttl\">来場予約フォーム</div>\
-        <p class=\"formrun-placeholder-sub\">\
-          氏名 ／ メール ／ 電話番号<br>\
-          来場日・時間帯（30分枠）<br>\
-          同伴人数（0〜2名）<br>\
-          トークイベント参加希望（任意）<br>\
-          LINE同意（任意）／ 規約同意（必須）\
-        </p>\
-        <div class=\"formrun-placeholder-url\">\
-          Formrunフォームを作成後、<br>iframeのsrc URLをここに貼ってください<br>\
-          例: https://form.run/embed/@gallery-dot-visit\
-        </div>\
-        <a href=\"https://form.run/@gallery-dot-visit\" class=\"btn-a\" target=\"_blank\" rel=\"noopener\" style=\"max-width:280px;display:block\">\
-          Formrunで予約する →\
-        </a>\
-      </div>\
-    </div>\
-  </div>\
-\
-  <!-- PANEL: トーク① -->\
-  <div class=\"res-panel\" id=\"panel-talk1\" role=\"tabpanel\">\
-    <div class=\"formrun-wrap\">\
-      <div class=\"formrun-placeholder\">\
-        <div class=\"formrun-placeholder-icon\">\
-          <svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg>\
-        </div>\
-        <div class=\"formrun-placeholder-ttl\">トークイベント①<br><em style=\"font-size:14px;font-weight:300\">1月11日（日）17:00–18:15</em></div>\
-        <p class=\"formrun-placeholder-sub\">\
-          「AFTER IMAGE と、10年のキュレーション」<br>\
-          定員40名 ／ 要事前予約\
-        </p>\
-        <div class=\"formrun-placeholder-url\">https://form.run/embed/@gallery-dot-talk1</div>\
-        <a href=\"https://form.run/@gallery-dot-talk1\" class=\"btn-a\" target=\"_blank\" rel=\"noopener\" style=\"max-width:280px;display:block\">\
-          Formrunで申し込む →\
-        </a>\
-      </div>\
-    </div>\
-  </div>\
-\
-  <!-- PANEL: トーク② -->\
-  <div class=\"res-panel\" id=\"panel-talk2\" role=\"tabpanel\">\
-    <div class=\"formrun-wrap\">\
-      <div class=\"formrun-placeholder\">\
-        <div class=\"formrun-placeholder-icon\">\
-          <svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg>\
-        </div>\
-        <div class=\"formrun-placeholder-ttl\">トークイベント②<br><em style=\"font-size:14px;font-weight:300\">1月17日（土）18:00–19:00</em></div>\
-        <p class=\"formrun-placeholder-sub\">\
-          「記憶・物質・イメージの残り方」<br>\
-          定員35名 ／ 要事前予約\
-        </p>\
-        <div class=\"formrun-placeholder-url\">https://form.run/embed/@gallery-dot-talk2</div>\
-        <a href=\"https://form.run/@gallery-dot-talk2\" class=\"btn-a\" target=\"_blank\" rel=\"noopener\" style=\"max-width:280px;display:block\">\
-          Formrunで申し込む →\
-        </a>\
-      </div>\
-    </div>\
-  </div>\
-\
-  <!-- PANEL: ライブ① -->\
-  <div class=\"res-panel\" id=\"panel-live1\" role=\"tabpanel\">\
-    <div class=\"formrun-wrap\">\
-      <div class=\"formrun-placeholder\">\
-        <div class=\"formrun-placeholder-icon\">\
-          <svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><polygon points=\"5 3 19 12 5 21 5 3\"/></svg>\
-        </div>\
-        <div class=\"formrun-placeholder-ttl\">ライブパフォーマンス①<br><em style=\"font-size:14px;font-weight:300\">1月18日（日）18:30–19:10</em></div>\
-        <p class=\"formrun-placeholder-sub\">\
-          「AFTER IMAGE / Light Trace」<br>\
-          NOA ISHIKAWA × KEN OTOMO<br>\
-          定員30名 ／ 要事前予約\
-        </p>\
-        <div class=\"formrun-placeholder-url\">https://form.run/embed/@gallery-dot-live1</div>\
-        <a href=\"https://form.run/@gallery-dot-live1\" class=\"btn-a\" target=\"_blank\" rel=\"noopener\" style=\"max-width:280px;display:block\">\
-          Formrunで申し込む →\
-        </a>\
-      </div>\
-    </div>\
-  </div>\
-\
-  <!-- PANEL: トーク③ -->\
-  <div class=\"res-panel\" id=\"panel-talk3\" role=\"tabpanel\">\
-    <div class=\"formrun-wrap\">\
-      <div class=\"formrun-placeholder\">\
-        <div class=\"formrun-placeholder-icon\">\
-          <svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><polyline points=\"12 6 12 12 16 14\"/></svg>\
-        </div>\
-        <div class=\"formrun-placeholder-ttl\">トークイベント③<br><em style=\"font-size:14px;font-weight:300\">1月24日（土）16:00–17:00</em></div>\
-        <p class=\"formrun-placeholder-sub\">\
-          「若手作家が語る \"AFTER IMAGE\"」<br>\
-          山城遥 ／ 小林新 ／ Chen Rui<br>\
-          定員50名 ／ 予約推奨（当日参加可）\
-        </p>\
-        <div class=\"formrun-placeholder-url\">https://form.run/embed/@gallery-dot-talk3</div>\
-        <a href=\"https://form.run/@gallery-dot-talk3\" class=\"btn-a\" target=\"_blank\" rel=\"noopener\" style=\"max-width:280px;display:block\">\
-          Formrunで申し込む →\
-        </a>\
-      </div>\
-    </div>\
-  </div>\
-\
-</section>\
-\
-<!-- ════════ ACCESS ════════ -->\
-<section class=\"access-section\" aria-labelledby=\"access-h\">\
-  <img src=\"images/Gallery_Dot.png\" alt=\"GALLERY DOT 外観・内観\" class=\"access-img reveal-scale\" loading=\"lazy\">\
-  <div class=\"access-info\">\
-    <div class=\"s-eyebrow reveal-left\">Access</div>\
-    <h2 class=\"s-ttl reveal-clip d-01\" id=\"access-h\">来場<br><em>方法</em></h2>\
-    <div class=\"ac-grid stagger-parent\">\
-      <div class=\"ac-row stagger-child\">\
-        <div class=\"ac-ic\" aria-hidden=\"true\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M8 1.5C5.52 1.5 3.5 3.52 3.5 6c0 3.75 4.5 8.5 4.5 8.5S12.5 9.75 12.5 6c0-2.48-2.02-4.5-4.5-4.5zm0 6a1.5 1.5 0 110-3 1.5 1.5 0 010 3z\" fill=\"currentColor\"/></svg></div>\
-        <div class=\"ac-txt\"><strong>所在地</strong>〒150-0001 東京都渋谷区神宮前 1-2-3 DOT BLDG 1F</div>\
-      </div>\
-      <div class=\"ac-row stagger-child\">\
-        <div class=\"ac-ic\" aria-hidden=\"true\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\"><circle cx=\"8\" cy=\"8\" r=\"6.5\" stroke=\"currentColor\" stroke-width=\"1.2\"/><path d=\"M8 4.5v4l2.5 1.5\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\"/></svg></div>\
-        <div class=\"ac-txt\"><strong>最寄り駅</strong>東京メトロ「明治神宮前〈原宿〉」徒歩3分 ／ JR「原宿」徒歩8分</div>\
-      </div>\
-      <div class=\"ac-row stagger-child\">\
-        <div class=\"ac-ic\" aria-hidden=\"true\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\"><rect x=\"2.5\" y=\"4.5\" width=\"11\" height=\"8\" rx=\"1\" stroke=\"currentColor\" stroke-width=\"1.2\"/><path d=\"M5.5 4.5V3a2.5 2.5 0 015 0v1.5\" stroke=\"currentColor\" stroke-width=\"1.2\"/></svg></div>\
-        <div class=\"ac-txt\"><strong>バリアフリー</strong>スロープ完備 ／ 車椅子での入場可 ／ ベビーカー預かりあり</div>\
-      </div>\
-      <div class=\"ac-row stagger-child\">\
-        <div class=\"ac-ic\" aria-hidden=\"true\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 16 16\" fill=\"none\"><path d=\"M13 2H3a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1V3a1 1 0 00-1-1zM5 7h6M5 10h4\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\"/></svg></div>\
-        <div class=\"ac-txt\"><strong>お問い合わせ</strong>info@gallery-dot.jp ／ 03-0000-0000</div>\
-      </div>\
-    </div>\
-    <div class=\"map-wrap reveal\">\
-      <iframe\
-        src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.4102!2d139.7027!3d35.6712!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188ca6c4e9cd51%3A0x9c5b2e7c7e5c5c5c!2z5piO5ryJ56ys5qCh5YmN77yI5Y6f5a6_77yJ6aeF!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp\"\
-        title=\"GALLERY DOT の地図 — 東京都渋谷区神宮前1-2-3\"\
-        loading=\"lazy\"\
-        referrerpolicy=\"no-referrer-when-downgrade\"\
-        allowfullscreen>\
-      </iframe>\
-    </div>\
-  </div>\
-</section>\
-\
-<div class=\"divider\"></div>\
-\
-<!-- ════════ FAQ ════════ -->\
-<section class=\"faq\" aria-labelledby=\"faq-h\">\
-  <div class=\"s-eyebrow reveal-left\">FAQ</div>\
-  <h2 class=\"s-ttl reveal-clip d-01\" id=\"faq-h\">よくある<br><em>ご質問</em></h2>\
-  <div class=\"faq-list\">\
-    <div class=\"fi\"><button class=\"fq\" aria-expanded=\"false\">予約なしでも入場できますか？<span class=\"fq-ico\" aria-hidden=\"true\">+</span></button><div class=\"fa\"><p class=\"fa-inner\">混雑時は予約優先・入場制限があります。特典（マグカップ）は予約来場者のみが対象です。</p></div></div>\
-    <div class=\"fi\"><button class=\"fq\" aria-expanded=\"false\">同伴者も特典をもらえますか？<span class=\"fq-ico\" aria-hidden=\"true\">+</span></button><div class=\"fa\"><p class=\"fa-inner\">特典は予約者本人のみ（1名1点）です。同伴は最大2名まで入場可能ですが、特典の対象外となります。</p></div></div>\
-    <div class=\"fi\"><button class=\"fq\" aria-expanded=\"false\">来場予約とイベント予約は別ですか？<span class=\"fq-ico\" aria-hidden=\"true\">+</span></button><div class=\"fa\"><p class=\"fa-inner\">はい、別々のフォームです。来場予約はマグカップ特典のため、トーク・ライブは各イベント専用フォームからお申し込みください。来場予約フォーム内でも「トークイベント参加希望」にチェックが可能です。</p></div></div>\
-    <div class=\"fi\"><button class=\"fq\" aria-expanded=\"false\">来場時間の変更はできますか？<span class=\"fq-ico\" aria-hidden=\"true\">+</span></button><div class=\"fa\"><p class=\"fa-inner\">前日18:00まで、予約確認メールのリンクから変更可能です。無断キャンセルが一定回数を超えると以後の予約をお断りする場合があります。</p></div></div>\
-    <div class=\"fi\"><button class=\"fq\" aria-expanded=\"false\">作品の撮影はできますか？<span class=\"fq-ico\" aria-hidden=\"true\">+</span></button><div class=\"fa\"><p class=\"fa-inner\">静止画のみ可（フラッシュ不可・動画不可）。「撮影不可」表示の作品は全撮影禁止です。ライブパフォーマンス中は一切の撮影不可です。</p></div></div>\
-    <div class=\"fi\"><button class=\"fq\" aria-expanded=\"false\">子連れでも入場できますか？<span class=\"fq-ico\" aria-hidden=\"true\">+</span></button><div class=\"fa\"><p class=\"fa-inner\">入場可能です。ベビーカーは受付にて預かります（数量限定）。ライブパフォーマンス①は未就学児は保護者同伴が必須です。</p></div></div>\
-    <div class=\"fi\"><button class=\"fq\" aria-expanded=\"false\">《After Silence》の入場制限について<span class=\"fq-ico\" aria-hidden=\"true\">+</span></button><div class=\"fa\"><p class=\"fa-inner\">ギャラリールームBにて実施。入場10名・15分入替制。撮影不可。当日整理券配布予定。</p></div></div>\
-  </div>\
-</section>\
-\
-<div class=\"divider\"></div>\
-\
-<!-- ════════ HISTORY ════════ -->\
-<section class=\"history\" aria-labelledby=\"history-h\">\
-  <div class=\"s-eyebrow reveal-left\">History</div>\
-  <h2 class=\"s-ttl reveal-clip d-01\" id=\"history-h\">ギャラリーの<br><em>歩み</em></h2>\
-  <div class=\"tl stagger-parent\">\
-    <div class=\"tl-item stagger-child\"><div class=\"tl-yr\">2025</div><div class=\"tl-desc\">10周年記念展 \"AFTER IMAGE\" 開催（本企画）</div></div>\
-    <div class=\"tl-item stagger-child\"><div class=\"tl-yr\">2024</div><div class=\"tl-desc\">企業コレクション向けキュレーション5件（オフィス常設）</div></div>\
-    <div class=\"tl-item stagger-child\"><div class=\"tl-yr\">2023</div><div class=\"tl-desc\">「Edge After Edge」図録が写真協会ブックアワードshortlist</div></div>\
-    <div class=\"tl-item stagger-child\"><div class=\"tl-yr\">2022</div><div class=\"tl-desc\">アーティスト・イン・レジデンス（新潟）／ 国内外5名招聘</div></div>\
-    <div class=\"tl-item stagger-child\"><div class=\"tl-yr\">2021</div><div class=\"tl-desc\">「Shadow Index」優秀企画賞（都美術館 連携企画）</div></div>\
-    <div class=\"tl-item stagger-child\"><div class=\"tl-yr\">2018</div><div class=\"tl-desc\">「New Vision Tokyo」— Tokyo Art Directors Award 入選</div></div>\
-    <div class=\"tl-item stagger-child\"><div class=\"tl-yr\">2016</div><div class=\"tl-desc\">GALLERY DOT 開廊。「Dot Studies #01」シリーズ開始</div></div>\
-  </div>\
-</section>\
-\
-<!-- STICKY 3 -->\
-<div class=\"sticky-scene\">\
-  <div class=\"sticky-inner\">\
-    <img src=\"images/Gallery_Dot.png\" alt=\"GALLERY DOT 東京・渋谷区神宮前\" class=\"sticky-img\" loading=\"lazy\">\
-    <div class=\"sticky-content\">\
-      <div class=\"sticky-text-item\"><div class=\"sticky-label\">Gallery — 東京・原宿</div></div>\
-      <div class=\"sticky-text-item\"><div class=\"sticky-title\">GALLERY<br><em>DOT</em></div></div>\
-      <div class=\"sticky-text-item\"><div class=\"sticky-sub\">〒150-0001 東京都渋谷区神宮前 1-2-3<br>明治神宮前〈原宿〉駅 徒歩3分</div></div>\
-    </div>\
-  </div>\
-</div>\
-\
-<!-- QR -->\
-<section class=\"qr-section reveal\" aria-labelledby=\"qr-h\">\
-  <div class=\"s-eyebrow qr-eyebrow\">QR Code</div>\
-  <h2 class=\"s-ttl qr-ttl\" id=\"qr-h\">友達にシェアする</h2>\
-  <img src=\"images/qr_gallery_dot.png\" alt=\"GALLERY DOT 来場予約ページ QRコード\" class=\"qr-img\" width=\"160\" height=\"160\" loading=\"lazy\">\
-  <p class=\"qr-caption\">gallery-dot.jp/after-image</p>\
-</section>\
-\
-<!-- FINAL CTA -->\
-<section class=\"fcta\" aria-labelledby=\"cta-h\">\
-  <div class=\"fcta-glow\" aria-hidden=\"true\"></div>\
-  <div class=\"fcta-eye reveal\">Reservation Required</div>\
-  <h2 class=\"fcta-ttl reveal-clip d-01\" id=\"cta-h\">今すぐ予約して<br><em>特典をゲット</em></h2>\
-  <p class=\"fcta-sub reveal d-02\">各日先着40個・なくなり次第終了。<br>予約は無料、3分で完了します。</p>\
-  <div class=\"fcta-btns reveal d-03\">\
-    <button class=\"btn-a btn-magnetic\" data-scroll-to=\".res-section\">来場予約する</button>\
-    <button class=\"btn-b\" data-scroll-to=\".res-section\">\
-      <div class=\"line-icon\" aria-hidden=\"true\"><svg width=\"11\" height=\"11\" viewBox=\"0 0 24 24\" fill=\"white\"><path d=\"M12 2C6.48 2 2 6.03 2 11c0 2.7 1.28 5.13 3.3 6.84L4 22l4.5-2.18C9.6 20.26 10.77 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z\"/></svg></div>\
-      LINEで最新情報を受け取る\
-    </button>\
-  </div>\
-</section>\
-\
-<!-- FOOTER -->\
-<footer>\
-  <div class=\"ft-logo\">Gallery Dot</div>\
-  <nav class=\"ft-links\" aria-label=\"フッターナビ\">\
-    <a href=\"https://www.instagram.com/gallery_dot/\" class=\"ft-link\" target=\"_blank\" rel=\"noopener\">Instagram</a>\
-    <a href=\"https://lin.ee/xxxxxxx\"                 class=\"ft-link\" target=\"_blank\" rel=\"noopener\">LINE</a>\
-    <a href=\"https://x.com/gallery_dot\"              class=\"ft-link\" target=\"_blank\" rel=\"noopener\">X</a>\
-    <a href=\"https://gallery-dot.jp\"                 class=\"ft-link\" target=\"_blank\" rel=\"noopener\">Website</a>\
-  </nav>\
-  <div class=\"ft-sns\">\
-    <a href=\"https://www.instagram.com/gallery_dot/\" class=\"sn\" aria-label=\"Instagram\" target=\"_blank\" rel=\"noopener\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"5\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><circle cx=\"17.5\" cy=\"6.5\" r=\"0.8\" fill=\"currentColor\" stroke=\"none\"/></svg></a>\
-    <a href=\"https://lin.ee/xxxxxxx\"                 class=\"sn\" aria-label=\"LINE\"      target=\"_blank\" rel=\"noopener\"><svg width=\"15\" height=\"15\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><path d=\"M12 2C6.48 2 2 6.03 2 11c0 2.7 1.28 5.13 3.3 6.84L4 22l4.5-2.18C9.6 20.26 10.77 20.5 12 20.5c5.52 0 10-4.03 10-9S17.52 2 12 2z\"/></svg></a>\
-    <a href=\"https://x.com/gallery_dot\"              class=\"sn\" aria-label=\"X\"         target=\"_blank\" rel=\"noopener\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z\"/></svg></a>\
-  </div>\
-  <address class=\"ft-copy\">\
-    〒150-0001 東京都渋谷区神宮前 1-2-3 DOT BLDG 1F<br>\
-    info@gallery-dot.jp ／ 03-0000-0000<br><br>\
-    © 2026 GALLERY DOT. All rights reserved.\
-  </address>\
-</footer>\
-\
-<script src=\"script.js\"></script>\
-</body>\
 </html>

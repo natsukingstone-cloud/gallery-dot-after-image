@@ -210,3 +210,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var gformWrap = document.querySelector('.gform-wrap');
   if (gformWrap) gformIo.observe(gformWrap);
+
+  // Fixed Bottom CTA
+(function(){
+  var fc = document.getElementById('fixed-cta');
+  var hero = document.getElementById('top');
+  if (!fc || !hero) return;
+  new IntersectionObserver(function(entries){
+    fc.classList.toggle('visible', !entries[0].isIntersecting);
+  }, { threshold: 0.1 }).observe(hero);
+})();

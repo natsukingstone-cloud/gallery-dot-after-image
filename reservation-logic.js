@@ -1,0 +1,317 @@
+(function(){
+  /* ★ GASのURLをここに貼り付け（reservation.jsと同じURL） */
+  var GAS_URL = '【GASデプロイURL】';
+
+  /* URLパラメータから予約IDを取得（メールリンクから来た場合） */
+  var params = new URLSearchParams(location.search);
+  var preId  = params.get('id') || '';
+  if (preId) document.getElementById('input-id').value = preId;
+
+  var currentReservation = null;
+
+  function $(id){ return document.getElementById(id); }
+
+  /* ── 予約照会 ── */
+  $('btn-lookup').addEventListener('click', function(){
+    var id    = $('input-id').value.trim().toUpperCase();
+    var email = $('input-email').value.trim();
+
+    $('lookup-error').style.display = 'none';
+    $('not-found').classList.remove('visible');
+    $('res-card').classList.remove('visible');
+
+    if (!id || !email) {
+      $('lookup-error').textContent = '予約番号とメールアドレスを入力してください';
+      $('lookup-error').style.display = 'block';
+      return;
+    }
+
+    $('btn-lookup').disabled = true;
+    $('btn-lookup').textContent = '確認中…';
+
+    callGAS({ action: 'lookup', reservationId: id, email: email }, function(res){
+      $('btn-lookup').disabled = false;
+      $('btn-lookup').textContent = '予約を確認する';
+
+      if (res && res.success && res.reservation) {
+        currentReservation = res.reservation;
+        showCard(res.reservation);
+      } else {
+        $('not-found').classList.add('visible');
+      }
+    });
+  });
+
+  function showCard(r){
+    $('card-id').textContent = r.reservationId;
+    var statusEl = $('card-status');
+    if (r.cancelled) {
+      statusEl.textContent = 'キャンセル済';
+      statusEl.className   = 'res-status cancelled';
+    } else {
+      statusEl.textContent = '予約中';
+      statusEl.className   = 'res-status active';
+    }
+
+    /* 来場日を読みやすい形式に変換 */
+    var dateMap = {
+      '01-10':'1月10日（土）開幕日','01-11':'1月11日（日）','01-12':'1月12日（月）',
+      '01-14':'1月14日（水）','01-15':'1月15日（木）','01-16':'1月16日（金）',
+      '01-17':'1月17日（土）','01-18':'1月18日（日）','01-19':'1月19日（月）',
+      '01-21':'1月21日（水）','01-22':'1月22日（木）','01-23':'1月23日（金）',
+      '01-24':'1月24日（土）','01-25':'1月25日（日）','01-26':'1月26日（月）最終日'
+    };
+    var evMap = {
+      'talk1':'1/11 トーク「AFTER IMAGE と、10年のキュレーション」',
+      'talk2':'1/17 トーク「記憶・物質・イメージの残り方」',
+      'live1':'1/18 ライブ「AFTER IMAGE / Light Trace」',
+      'talk3':'1/24 トーク「若手作家が語る "AFTER IMAGE"」'
+    };
+    var rows = [
+      ['お名前', r.name || '—'],
+      ['来場日', dateMap[r.visitDate] || r.visitDate || '—'],
+      ['時間帯', r.visitTime ? r.visitTime + '〜' : '—'],
+      ['同伴人数', (r.companions || '0') + '名'],
+      ['受付日時', fmtTimestamp(r.timestamp) || '—'],
+    ];
+    if (r.talkEvents && r.talkEvents.length) {
+      var evNames = r.talkEvents.map(function(e){ return evMap[e] || e; }).join('<br>');
+      rows.push(['イベント参加', evNames]);
+    }
+    $('card-body').innerHTML = rows.map(function(row){
+      return '<div class="res-row"><span class="res-key">' + row[0] +
+             '</span><span class="res-val">' + row[1] + '</span></div>';
+    }).join('');
+
+    /* キャンセル済の場合はアクションを非表示 */
+    $('res-actions').style.display = r.cancelled ? 'none' : 'flex';
+    $('change-form').classList.remove('visible');
+    $('cancel-confirm').classList.remove('visible');
+    $('result-msg').className = 'result-msg';
+
+    $('res-card').classList.add('visible');
+  }
+
+  /* ── 変更フォーム ── */
+  $('btn-show-change').addEventListener('click', function(){
+    $('change-form').classList.add('visible');
+    $('cancel-confirm').classList.remove('visible');
+  });
+  $('btn-cancel-change').addEventListener('click', function(){
+    $('change-form').classList.remove('visible');
+  });
+
+  $('btn-submit-change').addEventListener('click', function(){
+    var newDate = $('new-date').value;
+    var newTime = $('new-time').value;
+    if (!newDate || !newTime) {
+      alert('来場日と時間帯を選択してください');
+      return;
+    }
+    $('btn-submit-change').disabled = true;
+    $('btn-submit-change').textContent = '変更中…';
+
+    var newDateEvent   = EVENT_DATES[newDate];
+    var currentEvents  = currentReservation.talkEvents || [];
+    var sameEvents     = newDateEvent && currentEvents.indexOf(newDateEvent.id) !== -1;
+    var clearEvents    = currentEvents.length > 0 && !sameEvents;
+    /* 新しいイベントに申し込むか */
+    var joinNewEvent   = $('join-new-event') && $('join-new-event').checked;
+    var newEvents      = (joinNewEvent && newDateEvent) ? [newDateEvent.id] : [];
+
+    callGAS({
+      action: 'change',
+      reservationId: currentReservation.reservationId,
+      email: $('input-email').value.trim(),
+      newDate: newDate,
+      newTime: newTime,
+      clearEvents: clearEvents,
+      newEvents: newEvents
+    }, function(res){
+      $('btn-submit-change').disabled = false;
+      $('btn-submit-change').textContent = '変更を確定する';
+      $('change-form').classList.remove('visible');
+
+      var msg = $('result-msg');
+      if (res && res.success) {
+        msg.className = 'result-msg success';
+        msg.textContent = '✓ 変更が完了しました。確認メールをお送りしました。';
+        currentReservation.visitDate = newDate;
+        currentReservation.visitTime = newTime;
+        showCard(currentReservation);
+      } else {
+        msg.className = 'result-msg error-box';
+        msg.textContent = (res && res.message) ? res.message : '変更に失敗しました。再度お試しください。';
+      }
+    });
+  });
+
+  /* ── キャンセル ── */
+  $('btn-show-cancel').addEventListener('click', function(){
+    $('cancel-confirm').classList.add('visible');
+    $('change-form').classList.remove('visible');
+  });
+  $('btn-deny-cancel').addEventListener('click', function(){
+    $('cancel-confirm').classList.remove('visible');
+  });
+
+  $('btn-confirm-cancel').addEventListener('click', function(){
+    $('btn-confirm-cancel').disabled = true;
+    $('btn-confirm-cancel').textContent = '処理中…';
+
+    callGAS({
+      action: 'cancel',
+      reservationId: currentReservation.reservationId,
+      email: $('input-email').value.trim()
+    }, function(res){
+      $('btn-confirm-cancel').disabled = false;
+      $('btn-confirm-cancel').textContent = 'キャンセルする';
+      $('cancel-confirm').classList.remove('visible');
+
+      var msg = $('result-msg');
+      if (res && res.success) {
+        msg.className = 'result-msg success';
+        msg.textContent = '✓ 予約をキャンセルしました。確認メールをお送りしました。';
+        currentReservation.cancelled = true;
+        showCard(currentReservation);
+      } else {
+        msg.className = 'result-msg error-box';
+        msg.textContent = (res && res.message) ? res.message : 'キャンセルに失敗しました。再度お試しください。';
+      }
+    });
+  });
+
+  /* ── 日時フォーマット ── */
+  function fmtTimestamp(ts) {
+    if (!ts) return '—';
+    /* ISO形式 "2026-04-26T02:04:38.000Z" → "2026年4月26日 11:04" (JST) */
+    try {
+      var d = new Date(ts);
+      if (isNaN(d)) return ts; /* パース失敗時はそのまま返す */
+      var jst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
+      return jst.getUTCFullYear() + '年' +
+             (jst.getUTCMonth() + 1) + '月' +
+             jst.getUTCDate() + '日 ' +
+             String(jst.getUTCHours()).padStart(2,'0') + ':' +
+             String(jst.getUTCMinutes()).padStart(2,'0');
+    } catch(e) { return ts; }
+  }
+
+  /* ── イベントのある日付 ── */
+  var EVENT_DATES = {
+    '01-11': { id:'talk1', label:'トーク「AFTER IMAGE と、10年のキュレーション」', detail:'1/11（日）17:00–18:15 ／ 定員40名' },
+    '01-17': { id:'talk2', label:'トーク「記憶・物質・イメージの残り方」',         detail:'1/17（土）18:00–19:00 ／ 定員35名' },
+    '01-18': { id:'live1', label:'ライブ「AFTER IMAGE / Light Trace」',          detail:'1/18（日）18:30–19:10 ／ 定員30名' },
+    '01-24': { id:'talk3', label:'トーク「若手作家が語る "AFTER IMAGE"」',         detail:'1/24（土）16:00–17:00 ／ 定員50名' },
+    '01-25': { id:'live2', label:'ライブ「Archive Body」',                        detail:'1/25（日）17:30–18:00 ／ 予約不要・当日観覧可', noReserve:true }
+  };
+
+  /* 日付変更時：警告 or 新イベント選択を表示 */
+  $('new-date').addEventListener('change', function(){
+    var newDate      = $('new-date').value;
+    var warning      = $('event-warning');
+    var warningTxt   = $('event-warning-text');
+    var newEventWrap = $('new-event-wrap');
+    var newEventLbl  = $('new-event-label');
+    var newEventBox  = $('new-event-box');
+    var joinCheck    = $('join-new-event');
+
+    warning.style.display      = 'none';
+    newEventWrap.style.display = 'none';
+    joinCheck.checked          = false;
+    newEventBox.style.background = 'transparent';
+    newEventBox.innerHTML = '';
+
+    var currentEvents = (currentReservation && currentReservation.talkEvents) || [];
+    var newDateEvent  = EVENT_DATES[newDate];
+
+    if (currentEvents.length > 0) {
+      /* 現在イベントあり → 別の日または別イベントに変更 */
+      var sameEvents = newDateEvent && currentEvents.indexOf(newDateEvent.id) !== -1;
+      if (!sameEvents) {
+        var currentLabels = currentEvents.map(function(id){
+          for (var d in EVENT_DATES) { if (EVENT_DATES[d].id === id) return EVENT_DATES[d].label; }
+          return id;
+        });
+        var msg = '現在「' + currentLabels.join('」「') + '」にご参加予定です。';
+        if (newDateEvent) {
+          msg += '<br>変更後の日には別のイベントがあります。元のイベント予約は自動的にキャンセルされます。下のチェックで新しいイベントにも申し込めます。';
+          warningTxt.innerHTML = msg;
+          warning.style.display = 'block';
+          /* 新イベント選択を表示 */
+          newEventLbl.innerHTML = '<strong>' + newDateEvent.label + '</strong><br><small style="color:#6B7280">' + newDateEvent.detail + '</small>';
+          if (!newDateEvent.noReserve) {
+            newEventWrap.style.display = 'block';
+          } else {
+            /* 予約不要イベントは情報のみ */
+            newEventLbl.innerHTML = newDateEvent.label + '<br><small style="color:#3AA7C9">' + newDateEvent.detail + '</small>';
+            newEventWrap.style.display = 'block';
+            $('join-new-event').disabled = true;
+            $('new-event-box').innerHTML = '<span style="font-size:9px;color:#3AA7C9">予約不要</span>';
+          }
+        } else {
+          msg += '<br>変更後の日にはイベントがないため、元のイベント予約は自動的にキャンセルされます。';
+          warningTxt.innerHTML = msg;
+          warning.style.display = 'block';
+        }
+      }
+    } else if (newDateEvent) {
+      /* 現在イベントなし → イベントある日に変更 */
+      if (!newDateEvent.noReserve) {
+        newEventLbl.innerHTML = '<strong>' + newDateEvent.label + '</strong><br><small style="color:#6B7280">' + newDateEvent.detail + '</small>';
+        newEventWrap.style.display = 'block';
+      } else {
+        /* 1/25 など予約不要イベント：情報表示のみ */
+        newEventWrap.style.display = 'block';
+        newEventLbl.innerHTML = newDateEvent.label + '<br><small style="color:#3AA7C9">' + newDateEvent.detail + '</small>';
+        $('join-new-event').disabled = true;
+        $('new-event-box').innerHTML = '<span style="font-size:9px;color:#3AA7C9;letter-spacing:0.1em">予約不要</span>';
+      }
+    }
+  });
+
+  /* チェックボックスのビジュアル更新 */
+  document.addEventListener('change', function(e){
+    if (e.target && e.target.id === 'join-new-event') {
+      var box = $('new-event-box');
+      if (e.target.checked) {
+        box.style.background = '#E34F70';
+        box.style.borderColor = '#E34F70';
+        box.innerHTML = '<svg width="10" height="8" viewBox="0 0 10 8" fill="none"><polyline points="1 4 4 7 9 1" stroke="white" stroke-width="1.5"/></svg>';
+      } else {
+        box.style.background = 'transparent';
+        box.style.borderColor = 'rgba(255,255,255,0.15)';
+        box.innerHTML = '';
+      }
+    }
+  });
+
+  /* ── GAS通信 ── */
+  function callGAS(data, callback) {
+    if (!GAS_URL || GAS_URL.indexOf('【') !== -1) {
+      /* デモ動作 */
+      setTimeout(function(){
+        if (data.action === 'lookup') {
+          callback({ success: true, reservation: {
+            reservationId: data.reservationId,
+            name: 'テスト 太郎', visitDate: '01-11', visitTime: '14:00',
+            companions: '1', timestamp: '2026/01/05 10:00:00',
+            talkEvents: ['talk1'], cancelled: false
+          }});
+        } else {
+          callback({ success: true });
+        }
+      }, 800);
+      return;
+    }
+    fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify(data)
+    })
+    .then(function(r){ return r.json(); })
+    .then(callback)
+    .catch(function(){ callback({ success: false, message: 'ネットワークエラーが発生しました。' }); });
+  }
+
+})();

@@ -2775,3 +2775,27 @@ footer{background:#070709;padding:40px 24px;border-top:1px solid var(--brd)}
 .fq,
 .gd-counter-val,
 .stock-num { color: rgba(240,238,233,0.88) !important; }
+
+/* ================================================
+   FCTA: PC単一カラム・センター
+   ================================================ */
+@media (min-width: 768px) {
+  .fcta {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 100px 60px !important;
+    max-width: 860px !important;
+    margin: 0 auto !important;
+  }
+  .fcta-btns {
+    max-width: 300px !important;
+    width: 100%;
+  }
+}
+
+/* フッター: fixed-ctaバーに隠れないようpaddingを追加 */
+.simple-footer {
+  padding-bottom: 80px !important;
+}

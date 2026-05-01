@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300">
-  <rect width="1200" height="300" fill="#111216"/>
-  <text x="50" y="200" font-family="Inter, Helvetica, Arial, sans-serif" font-size="180" font-weight="800" fill="#FFFFFF">GALLERY DOT</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 28" width="200" height="28" overflow="visible">
+  <text x="0" y="20"
+    font-family="Inter, Helvetica, Arial, sans-serif"
+    font-size="16"
+    font-weight="700"
+    fill="#F0EEE9"
+    letter-spacing="3"
+    textLength="194"
+    lengthAdjust="spacing">GALLERY DOT</text>
 </svg>
